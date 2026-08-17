@@ -26,10 +26,8 @@ bundle exec pod install
 ## Test account
 
 There's no self-serve sign-up — sandbox accounts are provisioned
-individually per OEM. `App.tsx` comes pre-filled with:
-
-- Email: `ruby73805@gmail.com`
-- Password: `TestAccountPassword`
+individually per OEM. Coiliiot will give you a test account's email and
+password separately; enter them on the app's sign-in screen.
 
 ## Run
 

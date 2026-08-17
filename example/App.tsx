@@ -209,8 +209,8 @@ function App() {
   const [busyKey, setBusyKey] = useState<string | null>(null);
   const busy = busyKey !== null;
 
-  const [email, setEmail] = useState('ruby73805@gmail.com');
-  const [password, setPassword] = useState('TestAccountPassword');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const [ssid, setSsid] = useState('');
   const [wifiPassword, setWifiPassword] = useState('');
