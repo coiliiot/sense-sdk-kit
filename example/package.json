@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@coiliiot/sense-sdk": "file:../sdk",
+    "@coiliiot/sense-sdk": "file:../sdk/coiliiot-sense-sdk-0.1.0.tgz",
     "@react-native-firebase/app": "^23.8.8",
     "@react-native-firebase/auth": "^23.8.8",
     "@react-native-firebase/database": "^23.8.8",

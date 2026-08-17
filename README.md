@@ -19,12 +19,22 @@ TypeScript source.
 
 ## Setup
 
-The example app depends on the SDK via a local folder reference, already
-wired up in `example/package.json`:
+The example app depends on the SDK the same way any consumer would —
+installed from the tarball in `sdk/`, already wired up in
+`example/package.json`:
 
 ```json
-"@coiliiot/sense-sdk": "file:../sdk"
+"@coiliiot/sense-sdk": "file:../sdk/coiliiot-sense-sdk-0.1.0.tgz"
 ```
+
+This points at a `.tgz` file, not a folder, so npm extracts real files
+into `node_modules` instead of symlinking — the same thing that happens
+when installing from a registry or a release URL. (Earlier versions of
+this repo pointed at the `sdk/` folder directly, which npm symlinks; that
+tripped up Metro, which doesn't resolve symlinks outside its project root
+by default. Since this repo is the thing OEM developers copy from to
+start their own app, we'd rather the example not model a pattern that
+breaks for anyone who reuses it as-is.)
 
 ```sh
 cd example
@@ -37,16 +47,6 @@ iOS also needs CocoaPods, from `example/`:
 bundle install
 bundle exec pod install
 ```
-
-That `file:../sdk` reference is a local folder link (npm symlinks it),
-used only so this repo's example always builds against whatever is
-currently in `sdk/`, without needing a fresh tarball on every change. It's
-not how OEM consumers should install the SDK in their own app — see
-"Using the SDK in your own app" below for that. The folder link is also
-why `example/metro.config.js` carries extra `watchFolders` /
-`resolver.nodeModulesPaths` config: Metro doesn't resolve symlinks
-outside its project root by default, and a tarball install (which copies
-real files instead of symlinking) wouldn't need either.
 
 Then run the example same as any React Native app (`npm start`, then
 `npm run ios` or `npm run android` in a second terminal). See
