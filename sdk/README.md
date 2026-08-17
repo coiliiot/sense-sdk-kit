@@ -5,9 +5,8 @@ provisioning, gateway/sensor registration, and reading sensor data. This is
 a sandbox SDK backed by Coiliiot's staging environment — not production,
 and not the full Coiliiot Sense app or cloud.
 
-A working reference app using every function below lives in `example/` (or
-in the sibling `sense-mobile-sdk-demo` repo, depending on where you got
-this).
+A working reference app using every function below lives in the sibling
+[`example/`](../example) directory of this repo.
 
 ## Install
 
