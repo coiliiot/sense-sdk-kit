@@ -17,6 +17,8 @@ TypeScript source.
   register/remove a gateway, claim/unclaim/read sensors. Full source
   included — copy from it freely.
 
+<img src="docs/demo.gif" alt="Example app: sign in, scan, provision, register, claim sensors" width="320">
+
 ## Setup
 
 The example app depends on the SDK the same way any consumer would —
