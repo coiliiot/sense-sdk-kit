@@ -6,9 +6,9 @@ read its latest data. This targets Coiliiot's **staging** sandbox
 (`coiliiot-sense-staging`), not production — nothing here touches real
 customer data.
 
-All the actual logic lives in the SDK package
-(`../sense-mobile/packages/coiliiot-sense-sdk`); this app is just a thin
-UI wrapper around its five functions plus sign-in, in [App.tsx](App.tsx).
+All the actual logic lives in the SDK package (`../sdk`); this app is
+just a thin UI wrapper around its functions plus sign-in, in
+[App.tsx](App.tsx).
 
 ## Setup
 
@@ -80,20 +80,24 @@ node.executable=/absolute/path/to/your/node
 ```
 
 Find your path with `which node` in the terminal where `npm run android`
-works. `android/settings.gradle` picks this up automatically; if the key
-isn't set, it falls back to plain `node` on the default PATH.
+works. Both `android/settings.gradle` (autolinking) and
+`android/app/build.gradle` (codegen, JS bundling) pick this up
+automatically from the same `node.executable` key; if it isn't set, they
+fall back to plain `node` on the default PATH.
 
-## What hasn't been verified
+If instead Android Studio refuses to sync/build with an error like:
 
-This project was scaffolded and typechecked (`npx tsc --noEmit` passes
-against the real installed SDK), and its dependencies install cleanly, but
-it has not actually been built or run — the environment this was built in
-has an unresolved Xcode/CocoaPods codegen issue unrelated to this project's
-code. First real build is the first real test of the "no native Firebase
-config needed" assumption above, and of BLE provisioning end to end.
+```
+The project is using an incompatible version (AGP 9.2.1) of the Android
+Gradle plugin. Latest supported version is AGP 8.13.1
+```
 
-Also worth noting: this project's `engines.node` requires Node ≥22, while
-`sense-mobile` itself pins to whatever's currently installed (`node -v`
-showed v20.19.4 when this was scaffolded) — check `node -v` before running
-`npm start`, since a version mismatch here is a plausible first thing to
-hit.
+your installed Android Studio is too old for the AGP version this project
+uses (React Native 0.87 bundles AGP 9.2.1 by default). Update Android
+Studio via **Android Studio → Check for Updates** — no project change
+needed, since the project itself already builds fine at AGP 9.2.1 from
+the command line.
+
+This project requires Node ≥22 (see `engines` in `package.json`) — check
+`node -v` before running `npm start` if you hit unexplained install or
+Metro errors.
