@@ -59,6 +59,30 @@ initialization error at runtime, the fallback is to register this app's
 bundle ID (`com.coiliiot.sensesdkdemo`) as a normal app under
 `coiliiot-sense-staging` and add the resulting config files back in.
 
+## Building from Android Studio
+
+If you open `android/` directly in Android Studio (rather than running
+`npm run android` from a terminal) and the build fails with something like:
+
+```
+Cause: error=2, No such file or directory
+A problem occurred starting process 'command 'npx''
+```
+
+it's because Android Studio's embedded Gradle daemon inherits a minimal
+PATH that doesn't include `npx` if it's managed by nvm (or installed via
+Homebrew) — even though it works fine from your terminal. Fix it by adding
+this line to `android/local.properties` (already gitignored, per-machine —
+not something to commit):
+
+```
+node.executable=/absolute/path/to/your/node
+```
+
+Find your path with `which node` in the terminal where `npm run android`
+works. `android/settings.gradle` picks this up automatically; if the key
+isn't set, it falls back to plain `node` on the default PATH.
+
 ## What hasn't been verified
 
 This project was scaffolded and typechecked (`npx tsc --noEmit` passes

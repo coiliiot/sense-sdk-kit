@@ -1,6 +1,26 @@
 pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
 plugins { id("com.facebook.react.settings") }
-extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
+
+// Autolinking runs `npx @react-native-community/cli config` by default, via
+// the OS PATH. Android Studio's embedded Gradle daemon inherits a minimal
+// PATH (no nvm, no Homebrew) unlike an interactive shell, so `npx` isn't
+// found there even though it works fine from the terminal — and even an
+// absolute path to `npx` wouldn't fully fix it, since `npx` is itself a
+// script with a `#!/usr/bin/env node` shebang that needs `node` resolvable
+// too. Sidestep both problems by invoking the CLI's own script directly
+// with an absolute `node` path, same as `.xcode.env.local` does for iOS.
+// Set `node.executable=/absolute/path/to/node` in local.properties
+// (gitignored, per-machine) to override; otherwise this falls back to
+// plain `node`, which works if it's already globally on PATH.
+def localProperties = new Properties()
+def localPropertiesFile = new File(rootDir, "local.properties")
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withInputStream { localProperties.load(it) }
+}
+def nodeExecutable = localProperties.getProperty("node.executable", "node")
+def rnCliConfigCommand = [nodeExecutable, "node_modules/@react-native-community/cli/build/bin.js", "config"]
+
+extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand(rnCliConfigCommand) }
 rootProject.name = 'com.coiliiot.sensesdkdemo'
 include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')
