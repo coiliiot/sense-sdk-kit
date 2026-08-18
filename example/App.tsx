@@ -9,10 +9,9 @@
  * @format
  */
 
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   ActivityIndicator,
-  SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -22,6 +21,7 @@ import {
   View,
   useColorScheme,
 } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
   initSdk,
   signIn,
@@ -112,13 +112,13 @@ function useLog() {
   const log = useCallback((line: string, isError = false) => {
     const stamp = new Date().toLocaleTimeString();
     setLines(prev =>
-      [{text: `${stamp}  ${abbreviateIdsInText(line)}`, isError}, ...prev].slice(
-        0,
-        50,
-      ),
+      [
+        { text: `${stamp}  ${abbreviateIdsInText(line)}`, isError },
+        ...prev,
+      ].slice(0, 50),
     );
   }, []);
-  return {lines, log};
+  return { lines, log };
 }
 
 function Section({
@@ -135,13 +135,16 @@ function Section({
     <View
       style={[
         styles.section,
-        {borderColor: done ? theme.doneText : theme.border},
+        { borderColor: done ? theme.doneText : theme.border },
         done && styles.sectionDoneBorder,
-      ]}>
+      ]}
+    >
       <View style={styles.sectionHeader}>
-        <Text style={[styles.sectionTitle, {color: theme.text}]}>{title}</Text>
+        <Text style={[styles.sectionTitle, { color: theme.text }]}>
+          {title}
+        </Text>
         {done ? (
-          <Text style={[styles.doneBadge, {color: theme.doneText}]}>
+          <Text style={[styles.doneBadge, { color: theme.doneText }]}>
             ✓ Done
           </Text>
         ) : null}
@@ -166,7 +169,8 @@ function Button({
     <TouchableOpacity
       style={[styles.button, disabled && styles.buttonDisabled]}
       onPress={onPress}
-      disabled={disabled || loading}>
+      disabled={disabled || loading}
+    >
       {loading ? (
         <ActivityIndicator size="small" color="#fff" />
       ) : (
@@ -176,9 +180,11 @@ function Button({
   );
 }
 
-function Hint({children}: {children: React.ReactNode}) {
+function Hint({ children }: { children: React.ReactNode }) {
   const theme = useTheme();
-  return <Text style={[styles.hint, {color: theme.subtext}]}>{children}</Text>;
+  return (
+    <Text style={[styles.hint, { color: theme.subtext }]}>{children}</Text>
+  );
 }
 
 function ThemedInput(props: React.ComponentProps<typeof TextInput>) {
@@ -189,7 +195,7 @@ function ThemedInput(props: React.ComponentProps<typeof TextInput>) {
       placeholderTextColor={theme.placeholder}
       style={[
         styles.input,
-        {color: theme.text, borderColor: theme.border},
+        { color: theme.text, borderColor: theme.border },
         props.editable === false && styles.inputDisabled,
         props.style,
       ]}
@@ -199,7 +205,7 @@ function ThemedInput(props: React.ComponentProps<typeof TextInput>) {
 
 function App() {
   const theme = useTheme();
-  const {lines, log} = useLog();
+  const { lines, log } = useLog();
 
   const [ready, setReady] = useState(false);
   const [signedIn, setSignedIn] = useState(false);
@@ -231,9 +237,7 @@ function App() {
   // after 3s on its own (onScanEnd), which is why `scanning` isn't just set
   // by the button handlers.
   const [scanning, setScanning] = useState(false);
-  const [scannedDevices, setScannedDevices] = useState<DiscoveredGateway[]>(
-    [],
-  );
+  const [scannedDevices, setScannedDevices] = useState<DiscoveredGateway[]>([]);
   const stopScanRef = useRef<(() => void) | null>(null);
 
   const handleStartScan = () => {
@@ -321,7 +325,9 @@ function App() {
       await connectToGateway(device.id);
       setConnectedGatewayId(device.id);
       log(
-        `Connected to gateway ${abbreviateId(device.id)} — enter WiFi credentials to continue.`,
+        `Connected to gateway ${abbreviateId(
+          device.id,
+        )} — enter WiFi credentials to continue.`,
       );
     });
 
@@ -358,7 +364,9 @@ function App() {
         },
       });
       log(
-        `Gateway ${abbreviateId(gatewayBeingProvisioned)} provisioned and reached the cloud`,
+        `Gateway ${abbreviateId(
+          gatewayBeingProvisioned,
+        )} provisioned and reached the cloud`,
       );
       setGatewayId(gatewayBeingProvisioned);
       setConnectedGatewayId(null); // done — hide the WiFi form again
@@ -373,7 +381,9 @@ function App() {
       const gateway = await registerGateway(gatewayId);
       setActiveGatewayId(gateway.gateway_id);
       log(
-        `Gateway ${abbreviateId(gateway.gateway_id)} registered (model ${gateway.model})`,
+        `Gateway ${abbreviateId(gateway.gateway_id)} registered (model ${
+          gateway.model
+        })`,
       );
     });
 
@@ -398,7 +408,7 @@ function App() {
       await unregisterSensor(activeGatewayId, sensorId);
       log(`Sensor ${abbreviateId(sensorId)} unclaimed`);
       setSensorReadings(prev => {
-        const next = {...prev};
+        const next = { ...prev };
         delete next[sensorId];
         return next;
       });
@@ -407,7 +417,7 @@ function App() {
   const handleReadLatest = (sensorId: string) =>
     runStep(`readLatest:${sensorId}`, async () => {
       const data = await getLatestSensorData(activeGatewayId, sensorId);
-      setSensorReadings(prev => ({...prev, [sensorId]: data}));
+      setSensorReadings(prev => ({ ...prev, [sensorId]: data }));
       log(
         `Latest reading for ${abbreviateId(sensorId)}: ${JSON.stringify(
           data.current_data,
@@ -416,275 +426,320 @@ function App() {
     });
 
   return (
-    <SafeAreaView style={[styles.safe, {backgroundColor: theme.background}]}>
-      <StatusBar barStyle={theme === DARK_THEME ? 'light-content' : 'dark-content'} />
-      <ScrollView contentContainerStyle={styles.container}>
-        <Text style={[styles.title, {color: theme.text}]}>
-          Coiliiot Sense SDK Demo
-        </Text>
-        <Text style={[styles.subtitle, {color: theme.subtext}]}>
-          {ready ? 'SDK ready — coiliiot-sense-staging' : 'Initializing…'}
-        </Text>
+    <SafeAreaProvider>
+      <SafeAreaView
+        style={[styles.safe, { backgroundColor: theme.background }]}
+      >
+        <StatusBar
+          barStyle={theme === DARK_THEME ? 'light-content' : 'dark-content'}
+        />
+        <ScrollView contentContainerStyle={styles.container}>
+          <Text style={[styles.title, { color: theme.text }]}>
+            Coiliiot Sense SDK Demo
+          </Text>
+          <Text style={[styles.subtitle, { color: theme.subtext }]}>
+            {ready ? 'SDK ready — coiliiot-sense-staging' : 'Initializing…'}
+          </Text>
 
-        {!signedIn ? (
-          <Section title="1. Sign in">
-            <ThemedInput
-              value={email}
-              onChangeText={setEmail}
-              autoCapitalize="none"
-              placeholder="Email"
-            />
-            <ThemedInput
-              value={password}
-              onChangeText={setPassword}
-              secureTextEntry
-              placeholder="Password"
-            />
-            <Button
-              title="Sign In"
-              onPress={handleSignIn}
-              disabled={!ready || busy}
-              loading={busyKey === 'signIn'}
-            />
-          </Section>
-        ) : (
-          <>
-            <Section title="Signed in" done>
+          {!signedIn ? (
+            <Section title="1. Sign in">
+              <ThemedInput
+                value={email}
+                onChangeText={setEmail}
+                autoCapitalize="none"
+                placeholder="Email"
+              />
+              <ThemedInput
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry
+                placeholder="Password"
+              />
               <Button
-                title="Sign Out"
-                onPress={handleSignOut}
-                disabled={busy}
-                loading={busyKey === 'signOut'}
+                title="Sign In"
+                onPress={handleSignIn}
+                disabled={!ready || busy}
+                loading={busyKey === 'signIn'}
               />
             </Section>
-
-            <Section
-              title="2. Scan for a gateway over BLE"
-              done={!!connectedGatewayId || !!gatewayId}>
-              {scanning ? (
-                <Button title="Stop Scan" onPress={handleStopScan} />
-              ) : (
+          ) : (
+            <>
+              <Section title="Signed in" done>
                 <Button
-                  title="Scan for Gateways"
-                  onPress={handleStartScan}
+                  title="Sign Out"
+                  onPress={handleSignOut}
                   disabled={busy}
-                />
-              )}
-              {scanning ? (
-                <View style={styles.scanningRow}>
-                  <ActivityIndicator size="small" color={theme.subtext} />
-                  <Hint>Scanning…</Hint>
-                </View>
-              ) : null}
-              {!scanning && scannedDevices.length === 0 ? (
-                <Hint>None found.</Hint>
-              ) : null}
-              {scannedDevices.length > 0 ? (
-                scannedDevices.map(device => {
-                  const isConnected = device.id === connectedGatewayId;
-                  const isConnecting = busyKey === `connect:${device.id}`;
-                  const isDisconnecting = busyKey === `disconnect:${device.id}`;
-                  const statusColor = isConnected
-                    ? theme.doneText
-                    : isConnecting
-                    ? theme.connectingText
-                    : theme.subtext;
-                  const statusLabel = isConnected
-                    ? 'Connected'
-                    : isConnecting
-                    ? 'Connecting…'
-                    : 'Not connected';
-                  return (
-                    <View key={device.id} style={styles.row}>
-                      <View style={styles.rowText}>
-                        <Text style={[styles.deviceText, {color: theme.text}]}>
-                          {device.model}{'\n'}{abbreviateId(device.id)}  (rssi: {device.rssi ?? '—'})
-                        </Text>
-                        <Text style={[styles.statusText, {color: statusColor}]}>
-                          ● {statusLabel}
-                        </Text>
-                      </View>
-                      {isConnected ? (
-                        <Button
-                          title="Disconnect"
-                          onPress={() => handleDisconnectDevice(device.id)}
-                          disabled={busy}
-                          loading={isDisconnecting}
-                        />
-                      ) : (
-                        <Button
-                          title="Connect"
-                          onPress={() => handleConnectDevice(device)}
-                          disabled={busy || scanning}
-                          loading={isConnecting}
-                        />
-                      )}
-                    </View>
-                  );
-                })
-              ) : null}
-            </Section>
-
-            {connectedGatewayId || gatewayId ? (
-              <Section
-                title="3. Send WiFi credentials"
-                done={!connectedGatewayId && !!gatewayId}>
-                <Hint>
-                  {connectedGatewayId
-                    ? `Connected to ${abbreviateId(connectedGatewayId)}.`
-                    : `Credentials already sent for ${abbreviateId(gatewayId)}.`}
-                </Hint>
-                <ThemedInput
-                  value={ssid}
-                  onChangeText={setSsid}
-                  placeholder="WiFi SSID"
-                  editable={!!connectedGatewayId}
-                />
-                <ThemedInput
-                  value={wifiPassword}
-                  onChangeText={setWifiPassword}
-                  secureTextEntry
-                  placeholder="WiFi password"
-                  editable={!!connectedGatewayId}
-                />
-                <Button
-                  title="Send Credentials"
-                  onPress={handleSendCredentials}
-                  disabled={busy || !connectedGatewayId || !ssid || !wifiPassword}
-                  loading={busyKey === 'sendCredentials'}
+                  loading={busyKey === 'signOut'}
                 />
               </Section>
-            ) : null}
 
-            {gatewayId ? (
-              <Section title="4. Register the gateway to your account" done={!!activeGatewayId}>
-                <Hint>Gateway: {abbreviateId(gatewayId)}</Hint>
-                {activeGatewayId ? (
-                  <Button
-                    title="Remove Gateway"
-                    onPress={handleRemoveGateway}
-                    disabled={busy}
-                    loading={busyKey === 'removeGateway'}
-                  />
+              <Section
+                title="2. Scan for a gateway over BLE"
+                done={!!connectedGatewayId || !!gatewayId}
+              >
+                {scanning ? (
+                  <Button title="Stop Scan" onPress={handleStopScan} />
                 ) : (
                   <Button
-                    title="Register Gateway"
-                    onPress={handleRegisterGateway}
+                    title="Scan for Gateways"
+                    onPress={handleStartScan}
                     disabled={busy}
-                    loading={busyKey === 'registerGateway'}
                   />
                 )}
-              </Section>
-            ) : null}
-
-            {activeGatewayId ? (
-              <>
-                <Section
-                  title="5. Claim a sensor"
-                  done={registeredSensors.length > 0}>
-                  {unregisteredSensors.length === 0 ? (
-                    <Hint>No unclaimed sensors seen yet.</Hint>
-                  ) : (
-                    unregisteredSensors.map(sensor => (
-                      <View key={sensor.sensor_id} style={styles.row}>
-                        <Text style={[styles.rowText, {color: theme.text}]}>
-                          {abbreviateId(sensor.sensor_id)} ({sensor.model ?? 'unknown model'})
-                        </Text>
-                        <Button
-                          title="Claim"
-                          onPress={() => handleClaimSensor(sensor.sensor_id)}
-                          disabled={busy}
-                          loading={busyKey === `claim:${sensor.sensor_id}`}
-                        />
-                      </View>
-                    ))
-                  )}
-                </Section>
-
-                <Section title="6. Your claimed sensors">
-                  {registeredSensors.length === 0 ? (
-                    <Hint>No sensors claimed yet.</Hint>
-                  ) : (
-                    registeredSensors.map(sensor => {
-                      const reading = sensorReadings[sensor.sensor_id];
+                {scanning ? (
+                  <View style={styles.scanningRow}>
+                    <ActivityIndicator size="small" color={theme.subtext} />
+                    <Hint>Scanning…</Hint>
+                  </View>
+                ) : null}
+                {!scanning && scannedDevices.length === 0 ? (
+                  <Hint>None found.</Hint>
+                ) : null}
+                {scannedDevices.length > 0
+                  ? scannedDevices.map(device => {
+                      const isConnected = device.id === connectedGatewayId;
+                      const isConnecting = busyKey === `connect:${device.id}`;
+                      const isDisconnecting =
+                        busyKey === `disconnect:${device.id}`;
+                      const statusColor = isConnected
+                        ? theme.doneText
+                        : isConnecting
+                        ? theme.connectingText
+                        : theme.subtext;
+                      const statusLabel = isConnected
+                        ? 'Connected'
+                        : isConnecting
+                        ? 'Connecting…'
+                        : 'Not connected';
                       return (
-                        <View key={sensor.sensor_id} style={styles.sensorEntry}>
-                          <View style={styles.row}>
-                            <Text style={[styles.rowText, {color: theme.text}]}>
-                              {abbreviateId(sensor.sensor_id)} ({sensor.model ?? 'unknown model'})
+                        <View key={device.id} style={styles.row}>
+                          <View style={styles.rowText}>
+                            <Text
+                              style={[styles.deviceText, { color: theme.text }]}
+                            >
+                              {device.model}
+                              {'\n'}
+                              {abbreviateId(device.id)} (rssi:{' '}
+                              {device.rssi ?? '—'})
                             </Text>
-                            <View style={styles.buttonGroup}>
-                              <Button
-                                title="Read Latest"
-                                onPress={() => handleReadLatest(sensor.sensor_id)}
-                                disabled={busy}
-                                loading={busyKey === `readLatest:${sensor.sensor_id}`}
-                              />
-                              <Button
-                                title="Unclaim"
-                                onPress={() => handleUnclaimSensor(sensor.sensor_id)}
-                                disabled={busy}
-                                loading={busyKey === `unclaim:${sensor.sensor_id}`}
-                              />
-                            </View>
+                            <Text
+                              style={[
+                                styles.statusText,
+                                { color: statusColor },
+                              ]}
+                            >
+                              ● {statusLabel}
+                            </Text>
                           </View>
-                          {reading ? (
-                            <Hint>
-                              last_seen: {reading.last_seen}
-                              {'\n'}current_data: {JSON.stringify(reading.current_data)}
-                              {'\n'}rssi: {reading.rssi ?? '—'}  battery: {reading.battery ?? '—'}
-                            </Hint>
-                          ) : null}
+                          {isConnected ? (
+                            <Button
+                              title="Disconnect"
+                              onPress={() => handleDisconnectDevice(device.id)}
+                              disabled={busy}
+                              loading={isDisconnecting}
+                            />
+                          ) : (
+                            <Button
+                              title="Connect"
+                              onPress={() => handleConnectDevice(device)}
+                              disabled={busy || scanning}
+                              loading={isConnecting}
+                            />
+                          )}
                         </View>
                       );
                     })
+                  : null}
+              </Section>
+
+              {connectedGatewayId || gatewayId ? (
+                <Section
+                  title="3. Send WiFi credentials"
+                  done={!connectedGatewayId && !!gatewayId}
+                >
+                  <Hint>
+                    {connectedGatewayId
+                      ? `Connected to ${abbreviateId(connectedGatewayId)}.`
+                      : `Credentials already sent for ${abbreviateId(
+                          gatewayId,
+                        )}.`}
+                  </Hint>
+                  <ThemedInput
+                    value={ssid}
+                    onChangeText={setSsid}
+                    placeholder="WiFi SSID"
+                    editable={!!connectedGatewayId}
+                  />
+                  <ThemedInput
+                    value={wifiPassword}
+                    onChangeText={setWifiPassword}
+                    secureTextEntry
+                    placeholder="WiFi password"
+                    editable={!!connectedGatewayId}
+                  />
+                  <Button
+                    title="Send Credentials"
+                    onPress={handleSendCredentials}
+                    disabled={
+                      busy || !connectedGatewayId || !ssid || !wifiPassword
+                    }
+                    loading={busyKey === 'sendCredentials'}
+                  />
+                </Section>
+              ) : null}
+
+              {gatewayId ? (
+                <Section
+                  title="4. Register the gateway to your account"
+                  done={!!activeGatewayId}
+                >
+                  <Hint>Gateway: {abbreviateId(gatewayId)}</Hint>
+                  {activeGatewayId ? (
+                    <Button
+                      title="Remove Gateway"
+                      onPress={handleRemoveGateway}
+                      disabled={busy}
+                      loading={busyKey === 'removeGateway'}
+                    />
+                  ) : (
+                    <Button
+                      title="Register Gateway"
+                      onPress={handleRegisterGateway}
+                      disabled={busy}
+                      loading={busyKey === 'registerGateway'}
+                    />
                   )}
                 </Section>
-              </>
-            ) : null}
-          </>
-        )}
+              ) : null}
 
-        <Section title="Activity log">
-          {lines.length === 0 ? (
-            <Hint>Nothing yet.</Hint>
-          ) : (
-            lines.map((line, i) => (
-              <Text
-                key={i}
-                style={[
-                  styles.logLine,
-                  {color: line.isError ? theme.errorText : theme.subtext},
-                ]}>
-                {line.text}
-              </Text>
-            ))
+              {activeGatewayId ? (
+                <>
+                  <Section
+                    title="5. Claim a sensor"
+                    done={registeredSensors.length > 0}
+                  >
+                    {unregisteredSensors.length === 0 ? (
+                      <Hint>No unclaimed sensors seen yet.</Hint>
+                    ) : (
+                      unregisteredSensors.map(sensor => (
+                        <View key={sensor.sensor_id} style={styles.row}>
+                          <Text style={[styles.rowText, { color: theme.text }]}>
+                            {abbreviateId(sensor.sensor_id)} (
+                            {sensor.model ?? 'unknown model'})
+                          </Text>
+                          <Button
+                            title="Claim"
+                            onPress={() => handleClaimSensor(sensor.sensor_id)}
+                            disabled={busy}
+                            loading={busyKey === `claim:${sensor.sensor_id}`}
+                          />
+                        </View>
+                      ))
+                    )}
+                  </Section>
+
+                  <Section title="6. Your claimed sensors">
+                    {registeredSensors.length === 0 ? (
+                      <Hint>No sensors claimed yet.</Hint>
+                    ) : (
+                      registeredSensors.map(sensor => {
+                        const reading = sensorReadings[sensor.sensor_id];
+                        return (
+                          <View
+                            key={sensor.sensor_id}
+                            style={styles.sensorEntry}
+                          >
+                            <View style={styles.row}>
+                              <Text
+                                style={[styles.rowText, { color: theme.text }]}
+                              >
+                                {abbreviateId(sensor.sensor_id)} (
+                                {sensor.model ?? 'unknown model'})
+                              </Text>
+                              <View style={styles.buttonGroup}>
+                                <Button
+                                  title="Read Latest"
+                                  onPress={() =>
+                                    handleReadLatest(sensor.sensor_id)
+                                  }
+                                  disabled={busy}
+                                  loading={
+                                    busyKey === `readLatest:${sensor.sensor_id}`
+                                  }
+                                />
+                                <Button
+                                  title="Unclaim"
+                                  onPress={() =>
+                                    handleUnclaimSensor(sensor.sensor_id)
+                                  }
+                                  disabled={busy}
+                                  loading={
+                                    busyKey === `unclaim:${sensor.sensor_id}`
+                                  }
+                                />
+                              </View>
+                            </View>
+                            {reading ? (
+                              <Hint>
+                                last_seen: {reading.last_seen}
+                                {'\n'}current_data:{' '}
+                                {JSON.stringify(reading.current_data)}
+                                {'\n'}rssi: {reading.rssi ?? '—'} battery:{' '}
+                                {reading.battery ?? '—'}
+                              </Hint>
+                            ) : null}
+                          </View>
+                        );
+                      })
+                    )}
+                  </Section>
+                </>
+              ) : null}
+            </>
           )}
-        </Section>
-      </ScrollView>
-    </SafeAreaView>
+
+          <Section title="Activity log">
+            {lines.length === 0 ? (
+              <Hint>Nothing yet.</Hint>
+            ) : (
+              lines.map((line, i) => (
+                <Text
+                  key={i}
+                  style={[
+                    styles.logLine,
+                    { color: line.isError ? theme.errorText : theme.subtext },
+                  ]}
+                >
+                  {line.text}
+                </Text>
+              ))
+            )}
+          </Section>
+        </ScrollView>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  safe: {flex: 1},
-  container: {padding: 16, gap: 12},
-  title: {fontSize: 20, fontWeight: '700'},
-  subtitle: {fontSize: 13, marginBottom: 8},
+  safe: { flex: 1 },
+  container: { padding: 16, gap: 12 },
+  title: { fontSize: 20, fontWeight: '700' },
+  subtitle: { fontSize: 13, marginBottom: 8 },
   section: {
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: 8,
     padding: 12,
     gap: 8,
   },
-  sectionDoneBorder: {borderWidth: 1.5},
+  sectionDoneBorder: { borderWidth: 1.5 },
   sectionHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  sectionTitle: {fontSize: 15, fontWeight: '600'},
-  doneBadge: {fontSize: 12, fontWeight: '700'},
+  sectionTitle: { fontSize: 15, fontWeight: '600' },
+  doneBadge: { fontSize: 12, fontWeight: '700' },
   input: {
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: 6,
@@ -701,23 +756,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     minWidth: 44,
   },
-  buttonDisabled: {opacity: 0.4},
-  inputDisabled: {opacity: 0.4},
-  buttonText: {color: '#fff', fontWeight: '600'},
-  buttonGroup: {flexDirection: 'row', gap: 8},
-  scanningRow: {flexDirection: 'row', alignItems: 'center', gap: 6},
+  buttonDisabled: { opacity: 0.4 },
+  inputDisabled: { opacity: 0.4 },
+  buttonText: { color: '#fff', fontWeight: '600' },
+  buttonGroup: { flexDirection: 'row', gap: 8 },
+  scanningRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     gap: 8,
   },
-  sensorEntry: {gap: 4},
-  rowText: {flex: 1, fontSize: 13, gap: 2},
-  deviceText: {fontSize: 13},
-  statusText: {fontSize: 12, fontWeight: '600'},
-  hint: {fontSize: 12},
-  logLine: {fontSize: 11, fontFamily: 'Courier'},
+  sensorEntry: { gap: 4 },
+  rowText: { flex: 1, fontSize: 13, gap: 2 },
+  deviceText: { fontSize: 13 },
+  statusText: { fontSize: 12, fontWeight: '600' },
+  hint: { fontSize: 12 },
+  logLine: { fontSize: 11, fontFamily: 'Courier' },
 });
 
 export default App;
