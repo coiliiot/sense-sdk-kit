@@ -37,6 +37,7 @@ import {
   connectToGateway,
   sendWifiCredentials,
   registerGateway,
+  listenForGateways,
   listenForSensors,
   registerSensor,
   getLatestSensorData,
@@ -54,6 +55,14 @@ await initSdk({
 // 2. Sign in with the test account Coiliiot created for you.
 //    There is no sign-up — accounts are provisioned per OEM, not self-serve.
 await signIn('your-test-account@example.com', 'password');
+
+// 2a. Restore whatever this user already registered — nothing else in the
+//     SDK remembers this locally, so call this on every sign-in (not just
+//     the first) and use it to skip straight past steps 3-6 for gateways
+//     that already exist.
+const stopListeningForGateways = listenForGateways(gateways => {
+  console.log('already registered:', gateways);
+});
 
 // 3. Scan for gateways in BLE range. Every RG-RW10 unit advertises the same
 //    name, so if more than one is nearby, this list — updated live as each

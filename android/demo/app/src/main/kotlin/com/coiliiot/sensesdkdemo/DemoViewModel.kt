@@ -15,6 +15,7 @@ import com.coiliiot.sensesdk.SenseSdkConfig
 import com.coiliiot.sensesdk.connectToGateway
 import com.coiliiot.sensesdk.disconnectFromGateway
 import com.coiliiot.sensesdk.getLatestSensorData
+import com.coiliiot.sensesdk.listenForGateways
 import com.coiliiot.sensesdk.listenForSensors
 import com.coiliiot.sensesdk.registerSensor
 import com.coiliiot.sensesdk.scanForGateways
@@ -109,6 +110,7 @@ class DemoViewModel(application: Application) : AndroidViewModel(application) {
     var connectedGatewayId by mutableStateOf<String?>(null); private set
 
     private var stopListeningForSensors: (() -> Unit)? = null
+    private var stopListeningForGateways: (() -> Unit)? = null
 
     var logLines by mutableStateOf(listOf<LogEntry>()); private set
     private fun log(text: String, isError: Boolean = false) {
@@ -164,10 +166,31 @@ class DemoViewModel(application: Application) : AndroidViewModel(application) {
         val user = sdkSignIn(email, password)
         signedIn = true
         log("Signed in as ${user.email}")
+
+        // Nothing else in the SDK remembers what this user already
+        // registered — without this, every sign-in (including the very
+        // next one after the first successful run) would show a totally
+        // blank slate, forcing the whole scan/connect/provision/register
+        // dance again for a gateway that's already claimed. Only adopts a
+        // restored gateway if nothing is already active locally, so this
+        // doesn't clobber a provisioning flow already in progress in this
+        // same session.
+        stopListeningForGateways = listenForGateways { gateways ->
+            val gateway = gateways.firstOrNull() ?: return@listenForGateways
+            if (activeGatewayId.isNotEmpty()) return@listenForGateways
+
+            activeGatewayId = gateway.gateway_id
+            gatewayId = gateway.gateway_id
+            log("Restored previously registered gateway ${abbreviateId(gateway.gateway_id)}")
+            stopListeningForSensors?.invoke()
+            stopListeningForSensors = listenForSensors(gateway.gateway_id) { sensors -> allSensors = sensors }
+        }
     }
 
     fun signOut() = runStep("signOut") {
         sdkSignOut()
+        stopListeningForGateways?.invoke()
+        stopListeningForGateways = null
         stopListeningForSensors?.invoke()
         stopListeningForSensors = null
         signedIn = false
@@ -258,5 +281,6 @@ class DemoViewModel(application: Application) : AndroidViewModel(application) {
     override fun onCleared() {
         stopScanFn?.invoke()
         stopListeningForSensors?.invoke()
+        stopListeningForGateways?.invoke()
     }
 }

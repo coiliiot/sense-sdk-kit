@@ -59,6 +59,14 @@ SenseSdk.init(
 //    There is no sign-up — accounts are provisioned per OEM, not self-serve.
 signIn("your-test-account@example.com", "password")
 
+// 2a. Restore whatever this user already registered — nothing else in the
+//     SDK remembers this locally, so call this on every sign-in (not just
+//     the first) and use it to skip straight past steps 4-7 for gateways
+//     that already exist.
+val stopListeningForGateways = listenForGateways { gateways ->
+    println("already registered: $gateways")
+}
+
 // 3. Request Bluetooth/location permissions from your Activity BEFORE
 //    scanning — this SDK cannot request them on your app's behalf (see
 //    "Why scanForGateways() doesn't request permissions itself" below).

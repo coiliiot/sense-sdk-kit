@@ -33,6 +33,7 @@ import {
   registerGateway,
   removeGateway,
   listenForSensors,
+  listenForGateways,
   registerSensor,
   unregisterSensor,
   getLatestSensorData,
@@ -288,6 +289,33 @@ function App() {
     );
     return unsubscribe;
   }, [activeGatewayId]);
+
+  useEffect(() => {
+    if (!signedIn) {
+      return;
+    }
+    // Nothing else in the SDK remembers what this user already
+    // registered — without this, every sign-in (including the very next
+    // one after the first successful run) would show a blank slate,
+    // forcing the whole scan/connect/provision/register dance again for a
+    // gateway that's already claimed. Only adopts a restored gateway if
+    // nothing is already active locally, so this doesn't clobber a
+    // provisioning flow already in progress in this same session.
+    const unsubscribe = listenForGateways(gateways => {
+      const gateway = gateways[0];
+      if (!gateway || activeGatewayId) {
+        return;
+      }
+      setActiveGatewayId(gateway.gateway_id);
+      setGatewayId(gateway.gateway_id);
+      log(
+        `Restored previously registered gateway ${abbreviateId(
+          gateway.gateway_id,
+        )}`,
+      );
+    });
+    return unsubscribe;
+  }, [signedIn, activeGatewayId, log]);
 
   const runStep = async (key: string, action: () => Promise<void>) => {
     setBusyKey(key);
