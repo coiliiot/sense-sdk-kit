@@ -4,112 +4,67 @@ import android.Manifest
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.border
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.coiliiot.sensesdk.DiscoveredGateway
-import com.coiliiot.sensesdk.ProvisioningStage
 import com.coiliiot.sensesdk.SdkSensor
-import com.coiliiot.sensesdk.SenseSdk
-import com.coiliiot.sensesdk.SenseSdkConfig
-import com.coiliiot.sensesdk.connectToGateway
-import com.coiliiot.sensesdk.disconnectFromGateway
-import com.coiliiot.sensesdk.getCurrentUserId
-import com.coiliiot.sensesdk.getLatestSensorData
-import com.coiliiot.sensesdk.listenForSensors
-import com.coiliiot.sensesdk.onAuthStateChanged
-import com.coiliiot.sensesdk.registerGateway
-import com.coiliiot.sensesdk.registerSensor
-import com.coiliiot.sensesdk.removeGateway
-import com.coiliiot.sensesdk.scanForGateways
-import com.coiliiot.sensesdk.sendWifiCredentials
-import com.coiliiot.sensesdk.signIn
-import com.coiliiot.sensesdk.signOut
-import com.coiliiot.sensesdk.unregisterSensor
-import kotlinx.coroutines.launch
-
-// Coiliiot-provided sandbox config for coiliiot-sense-staging. Not a
-// secret — a Firebase Web config, meaningless without a signed-in test
-// account, which is what actually gates access (see the Firestore/RTDB
-// rules). Same values as the RN demo's App.tsx uses, including the same
-// (iOS-registered) appId on both platforms — SenseSdk.init() creates its
-// own named Firebase app instance directly from these values rather than
-// registering a real native app under this demo's package name, so there
-// is no platform-specific appId to switch to here; this exact
-// cross-platform reuse is already proven working by the RN demo.
-private val SDK_CONFIG = SenseSdkConfig(
-    apiKey = "AIzaSyBHg5hFnWY6Ntr7eZ8AvZ5B1sQYazJJWQc",
-    appId = "1:293291367046:ios:ed03125d577b01e8d88f07",
-    projectId = "coiliiot-sense-staging",
-    databaseUrl = "https://coiliiot-sense-staging-default-rtdb.firebaseio.com",
-    storageBucket = "coiliiot-sense-staging.firebasestorage.app",
-    messagingSenderId = "293291367046",
-)
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        SenseSdk.init(applicationContext, SDK_CONFIG)
         setContent {
-            MaterialTheme {
+            val darkTheme = isSystemInDarkTheme()
+            MaterialTheme(
+                colorScheme = if (darkTheme) darkColorScheme() else lightColorScheme(),
+            ) {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    DemoScreen()
+                    val viewModel: DemoViewModel = viewModel()
+                    DemoScreen(viewModel)
                 }
             }
         }
     }
 }
 
+private val DoneGreen = Color(0xFF16A34A)
+private val ConnectingAmber = Color(0xFFB45309)
+private val ErrorRed = Color(0xFFDC2626)
+
 @Composable
-private fun DemoScreen() {
-    val scope = rememberCoroutineScope()
-
-    var log by remember { mutableStateOf(listOf<String>()) }
-    fun logLine(text: String) {
-        log = (listOf(text) + log).take(50)
-    }
-
-    var signedIn by remember { mutableStateOf(false) }
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-
-    // scanForGateways/onAuthStateChanged both hand back an unsubscribe
-    // function synchronously — this holds onto whichever one is currently
-    // live so it can be called again later (stop scan, sign out cleanly).
-    var stopScan by remember { mutableStateOf<(() -> Unit)?>(null) }
-    var scanning by remember { mutableStateOf(false) }
-    var scannedDevices by remember { mutableStateOf(listOf<DiscoveredGateway>()) }
-    var connectedGatewayId by remember { mutableStateOf<String?>(null) }
-
-    var ssid by remember { mutableStateOf("") }
-    var wifiPassword by remember { mutableStateOf("") }
-
-    var activeGatewayId by remember { mutableStateOf<String?>(null) }
-    var sensors by remember { mutableStateOf(listOf<SdkSensor>()) }
-    var stopListeningForSensors by remember { mutableStateOf<(() -> Unit)?>(null) }
-
+private fun DemoScreen(vm: DemoViewModel) {
     val blePermissions = remember {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             arrayOf(Manifest.permission.BLUETOOTH_SCAN, Manifest.permission.BLUETOOTH_CONNECT)
@@ -120,234 +75,318 @@ private fun DemoScreen() {
     val requestBlePermissions = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions(),
     ) { granted ->
-        if (granted.values.all { it }) {
-            startScan(
-                onDevices = { scannedDevices = it },
-                onStop = { stopScan = null; scanning = false },
-                onError = { logLine("Scan error: ${it.message}") },
-                onStart = { stop -> stopScan = stop; scanning = true },
-            )
-        } else {
-            logLine("Bluetooth/location permissions were not granted.")
-        }
+        if (granted.values.all { it }) vm.startScan() else vm.reportPermissionDenied()
     }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .safeDrawingPadding()
+            .verticalScroll(rememberScrollState())
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        Text("Coiliiot Sense SDK Demo (Android)", style = MaterialTheme.typography.titleLarge)
-        Text("SDK ready — coiliiot-sense-staging", style = MaterialTheme.typography.bodySmall)
+        Text("Coiliiot Sense SDK Demo", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+        Text(
+            if (vm.ready) "SDK ready — coiliiot-sense-staging" else "Initializing…",
+            style = MaterialTheme.typography.bodySmall,
+        )
 
-        // 1. Sign in
-        Section(title = "1. Sign in", done = signedIn) {
-            if (!signedIn) {
-                OutlinedTextField(email, { email = it }, label = { Text("Email") }, modifier = Modifier.fillMaxWidth())
+        if (!vm.signedIn) {
+            Section(title = "1. Sign in") {
                 OutlinedTextField(
-                    password,
-                    { password = it },
+                    vm.email,
+                    vm::updateEmail,
+                    label = { Text("Email") },
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                OutlinedTextField(
+                    vm.password,
+                    vm::updatePassword,
                     label = { Text("Password") },
                     modifier = Modifier.fillMaxWidth(),
                 )
-                Button(onClick = {
-                    scope.launch {
-                        try {
-                            signIn(email, password)
-                            signedIn = true
-                            logLine("Signed in as ${getCurrentUserId()}")
-                        } catch (e: Exception) {
-                            logLine("Sign in failed: ${e.message}")
-                        }
-                    }
-                }) { Text("Sign In") }
-            } else {
-                Button(onClick = {
-                    signOut()
-                    signedIn = false
-                    connectedGatewayId = null
-                    activeGatewayId = null
-                    sensors = emptyList()
-                    logLine("Signed out")
-                }) { Text("Sign Out") }
-            }
-        }
-
-        // 2. Scan for a gateway over BLE
-        Section(title = "2. Scan for a gateway over BLE", done = connectedGatewayId != null) {
-            Button(
-                enabled = signedIn && !scanning,
-                onClick = { requestBlePermissions.launch(blePermissions) },
-            ) { Text(if (scanning) "Scanning…" else "Scan for Gateways") }
-
-            scannedDevices.forEach { device ->
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                ) {
-                    Text("${device.model} (${device.id})  rssi=${device.rssi}")
-                    Button(onClick = {
-                        stopScan?.invoke()
-                        scope.launch {
-                            try {
-                                connectToGateway(device.id)
-                                connectedGatewayId = device.id
-                                logLine("Connected to ${device.id}")
-                            } catch (e: Exception) {
-                                logLine("Connect failed: ${e.message}")
-                            }
-                        }
-                    }) { Text("Connect") }
-                }
-            }
-        }
-
-        // 3. Send WiFi credentials
-        if (connectedGatewayId != null && activeGatewayId == null) {
-            Section(title = "3. Send WiFi credentials", done = false) {
-                OutlinedTextField(ssid, { ssid = it }, label = { Text("WiFi SSID") }, modifier = Modifier.fillMaxWidth())
-                OutlinedTextField(
-                    wifiPassword,
-                    { wifiPassword = it },
-                    label = { Text("WiFi password") },
-                    modifier = Modifier.fillMaxWidth(),
+                DemoButton(
+                    "Sign In",
+                    onClick = vm::signIn,
+                    enabled = vm.ready && !vm.busy,
+                    loading = vm.busyKey == "signIn",
                 )
-                Button(onClick = {
-                    val gatewayId = connectedGatewayId ?: return@Button
-                    scope.launch {
-                        try {
-                            sendWifiCredentials(gatewayId, ssid, wifiPassword) { stage ->
-                                when (stage) {
-                                    ProvisioningStage.WIFI_OK -> logLine("Gateway connected to WiFi, reaching cloud…")
-                                    ProvisioningStage.OK -> logLine("Provisioning succeeded")
-                                    ProvisioningStage.WIFI_FAIL ->
-                                        logLine("Wrong WiFi credentials — connection still open, try again")
-                                    ProvisioningStage.SERVER_FAIL -> {
-                                        logLine("Gateway couldn't reach the cloud — it's rebooting")
-                                        connectedGatewayId = null
-                                    }
-                                }
-                            }
-                        } catch (e: Exception) {
-                            logLine("Send credentials failed: ${e.message}")
-                        }
-                    }
-                }) { Text("Send Credentials") }
             }
-        }
+        } else {
+            Section(title = "Signed in", done = true) {
+                DemoButton("Sign Out", onClick = vm::signOut, enabled = !vm.busy, loading = vm.busyKey == "signOut")
+            }
 
-        // 4. Register the gateway to your account
-        if (connectedGatewayId != null) {
-            Section(title = "4. Register the gateway to your account", done = activeGatewayId != null) {
-                if (activeGatewayId == null) {
-                    Button(onClick = {
-                        val gatewayId = connectedGatewayId ?: return@Button
-                        scope.launch {
-                            try {
-                                val gateway = registerGateway(gatewayId)
-                                activeGatewayId = gateway.gateway_id
-                                logLine("Registered gateway ${gateway.gateway_id}")
-                                stopListeningForSensors = listenForSensors(gateway.gateway_id) { sensors = it }
-                            } catch (e: Exception) {
-                                logLine("Register gateway failed: ${e.message}")
-                            }
-                        }
-                    }) { Text("Register Gateway") }
+            Section(
+                title = "2. Scan for a gateway over BLE",
+                done = vm.connectedGatewayId != null || vm.gatewayId.isNotEmpty(),
+            ) {
+                if (vm.scanning) {
+                    DemoButton("Stop Scan", onClick = vm::stopScan)
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        CircularProgressIndicator(
+                            modifier = Modifier.padding(end = 8.dp).size(14.dp),
+                            strokeWidth = 2.dp,
+                        )
+                        Hint("Scanning…")
+                    }
                 } else {
-                    Button(onClick = {
-                        val gatewayId = activeGatewayId ?: return@Button
-                        scope.launch {
-                            try {
-                                stopListeningForSensors?.invoke()
-                                stopListeningForSensors = null
-                                removeGateway(gatewayId)
-                                activeGatewayId = null
-                                connectedGatewayId = null
-                                sensors = emptyList()
-                                logLine("Removed gateway $gatewayId")
-                            } catch (e: Exception) {
-                                logLine("Remove gateway failed: ${e.message}")
-                            }
-                        }
-                    }) { Text("Remove Gateway") }
+                    DemoButton(
+                        "Scan for Gateways",
+                        onClick = { requestBlePermissions.launch(blePermissions) },
+                        enabled = !vm.busy,
+                    )
+                }
+                if (!vm.scanning && vm.scannedDevices.isEmpty()) {
+                    Hint("None found.")
+                }
+                vm.scannedDevices.forEach { device ->
+                    DeviceRow(device, vm)
                 }
             }
-        }
 
-        // 5. Claim a sensor
-        if (activeGatewayId != null) {
-            Section(title = "5. Claim a sensor", done = sensors.any { it.is_registered }) {
-                sensors.forEach { sensor ->
-                    Row(
+            if (vm.connectedGatewayId != null || vm.gatewayId.isNotEmpty()) {
+                Section(
+                    title = "3. Send WiFi credentials",
+                    done = vm.connectedGatewayId == null && vm.gatewayId.isNotEmpty(),
+                ) {
+                    Hint(
+                        vm.connectedGatewayId?.let { "Connected to ${abbreviateId(it)}." }
+                            ?: "Credentials already sent for ${abbreviateId(vm.gatewayId)}.",
+                    )
+                    OutlinedTextField(
+                        vm.ssid,
+                        vm::updateSsid,
+                        label = { Text("WiFi SSID") },
+                        enabled = vm.connectedGatewayId != null,
                         modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                    ) {
-                        Text("${sensor.sensor_id} (${sensor.model ?: "unknown model"})")
-                        Button(onClick = {
-                            val gatewayId = activeGatewayId ?: return@Button
-                            scope.launch {
-                                try {
-                                    if (sensor.is_registered) {
-                                        unregisterSensor(gatewayId, sensor.sensor_id)
-                                        logLine("Unclaimed ${sensor.sensor_id}")
-                                    } else {
-                                        registerSensor(gatewayId, sensor.sensor_id)
-                                        logLine("Claimed ${sensor.sensor_id}")
-                                    }
-                                } catch (e: Exception) {
-                                    logLine("Claim/unclaim failed: ${e.message}")
-                                }
-                            }
-                        }) { Text(if (sensor.is_registered) "Unclaim" else "Claim") }
-                        Button(onClick = {
-                            val gatewayId = activeGatewayId ?: return@Button
-                            scope.launch {
-                                try {
-                                    val reading = getLatestSensorData(gatewayId, sensor.sensor_id)
-                                    logLine("${sensor.sensor_id}: ${reading.current_data}")
-                                } catch (e: Exception) {
-                                    logLine("Read failed: ${e.message}")
-                                }
-                            }
-                        }) { Text("Read") }
+                    )
+                    OutlinedTextField(
+                        vm.wifiPassword,
+                        vm::updateWifiPassword,
+                        label = { Text("WiFi password") },
+                        enabled = vm.connectedGatewayId != null,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    DemoButton(
+                        "Send Credentials",
+                        onClick = vm::sendCredentials,
+                        enabled = !vm.busy && vm.connectedGatewayId != null && vm.ssid.isNotEmpty() && vm.wifiPassword.isNotEmpty(),
+                        loading = vm.busyKey == "sendCredentials",
+                    )
+                }
+            }
+
+            if (vm.gatewayId.isNotEmpty()) {
+                Section(title = "4. Register the gateway to your account", done = vm.activeGatewayId.isNotEmpty()) {
+                    Hint("Gateway: ${abbreviateId(vm.gatewayId)}")
+                    if (vm.activeGatewayId.isNotEmpty()) {
+                        DemoButton(
+                            "Remove Gateway",
+                            onClick = vm::removeGateway,
+                            enabled = !vm.busy,
+                            loading = vm.busyKey == "removeGateway",
+                        )
+                    } else {
+                        DemoButton(
+                            "Register Gateway",
+                            onClick = vm::registerGateway,
+                            enabled = !vm.busy,
+                            loading = vm.busyKey == "registerGateway",
+                        )
+                    }
+                }
+            }
+
+            if (vm.activeGatewayId.isNotEmpty()) {
+                Section(title = "5. Claim a sensor", done = vm.registeredSensors.isNotEmpty()) {
+                    if (vm.unregisteredSensors.isEmpty()) {
+                        Hint("No unclaimed sensors seen yet.")
+                    } else {
+                        vm.unregisteredSensors.forEach { sensor -> ClaimSensorRow(sensor, vm) }
+                    }
+                }
+
+                Section(title = "6. Your claimed sensors") {
+                    if (vm.registeredSensors.isEmpty()) {
+                        Hint("No sensors claimed yet.")
+                    } else {
+                        vm.registeredSensors.forEach { sensor -> ClaimedSensorRow(sensor, vm) }
                     }
                 }
             }
         }
 
         HorizontalDivider()
-        Text("Log", style = MaterialTheme.typography.titleMedium)
-        LazyColumn {
-            items(log) { line -> Text(line, style = MaterialTheme.typography.bodySmall) }
+        Section(title = "Activity log") {
+            if (vm.logLines.isEmpty()) {
+                Hint("Nothing yet.")
+            } else {
+                vm.logLines.forEach { line ->
+                    Text(
+                        line.text,
+                        fontSize = 11.sp,
+                        color = if (line.isError) ErrorRed else MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
         }
     }
 }
 
-private fun startScan(
-    onDevices: (List<DiscoveredGateway>) -> Unit,
-    onStop: () -> Unit,
-    onError: (Exception) -> Unit,
-    onStart: (() -> Unit) -> Unit,
-) {
-    val stop = scanForGateways(
-        onUpdate = onDevices,
-        onError = onError,
-        onScanEnd = onStop,
-    )
-    onStart(stop)
+@Composable
+private fun DeviceRow(device: DiscoveredGateway, vm: DemoViewModel) {
+    val isConnected = device.id == vm.connectedGatewayId
+    val isConnecting = vm.busyKey == "connect:${device.id}"
+    val isDisconnecting = vm.busyKey == "disconnect:${device.id}"
+    val statusColor = when {
+        isConnected -> DoneGreen
+        isConnecting -> ConnectingAmber
+        else -> MaterialTheme.colorScheme.onSurfaceVariant
+    }
+    val statusLabel = when {
+        isConnected -> "Connected"
+        isConnecting -> "Connecting…"
+        else -> "Not connected"
+    }
+
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Text("${device.model}\n${abbreviateId(device.id)} (rssi: ${device.rssi ?: "—"})", fontSize = 13.sp)
+            Text("● $statusLabel", fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = statusColor)
+        }
+        if (isConnected) {
+            DemoButton(
+                "Disconnect",
+                onClick = { vm.disconnectFromDevice(device.id) },
+                enabled = !vm.busy,
+                loading = isDisconnecting,
+            )
+        } else {
+            DemoButton(
+                "Connect",
+                onClick = { vm.connectToDevice(device) },
+                enabled = !vm.busy && !vm.scanning,
+                loading = isConnecting,
+            )
+        }
+    }
 }
 
 @Composable
-private fun Section(title: String, done: Boolean, content: @Composable () -> Unit) {
-    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+private fun ClaimSensorRow(sensor: SdkSensor, vm: DemoViewModel) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        Text(
+            "${abbreviateId(sensor.sensor_id)} (${sensor.model ?: "unknown model"})",
+            fontSize = 13.sp,
+            modifier = Modifier.weight(1f),
+        )
+        DemoButton(
+            "Claim",
+            onClick = { vm.claimSensor(sensor.sensor_id) },
+            enabled = !vm.busy,
+            loading = vm.busyKey == "claim:${sensor.sensor_id}",
+        )
+    }
+}
+
+@Composable
+private fun ClaimedSensorRow(sensor: SdkSensor, vm: DemoViewModel) {
+    val reading = vm.sensorReadings[sensor.sensor_id]
+    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            Text(
+                "${abbreviateId(sensor.sensor_id)} (${sensor.model ?: "unknown model"})",
+                fontSize = 13.sp,
+                modifier = Modifier.weight(1f),
+            )
+            DemoButton(
+                "Read Latest",
+                onClick = { vm.readLatest(sensor.sensor_id) },
+                enabled = !vm.busy,
+                loading = vm.busyKey == "readLatest:${sensor.sensor_id}",
+            )
+            DemoButton(
+                "Unclaim",
+                onClick = { vm.unclaimSensor(sensor.sensor_id) },
+                enabled = !vm.busy,
+                loading = vm.busyKey == "unclaim:${sensor.sensor_id}",
+            )
+        }
+        if (reading != null) {
+            Hint(
+                "last_seen: ${reading.last_seen}\n" +
+                    "current_data: ${reading.current_data}\n" +
+                    "rssi: ${reading.rssi ?: "—"}  battery: ${reading.battery ?: "—"}",
+            )
+        }
+    }
+}
+
+@Composable
+private fun Section(title: String, done: Boolean = false, content: @Composable () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .then(
+                Modifier.border(
+                    width = if (done) 1.5.dp else 0.5.dp,
+                    color = if (done) DoneGreen else MaterialTheme.colorScheme.outline,
+                    shape = RoundedCornerShape(8.dp),
+                ),
+            )
+            .padding(12.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            Text(title, style = MaterialTheme.typography.titleMedium)
-            if (done) Text("✓ Done")
+            Text(title, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+            if (done) Text("✓ Done", fontSize = 12.sp, fontWeight = FontWeight.Bold, color = DoneGreen)
         }
         content()
     }
+}
+
+@Composable
+private fun DemoButton(
+    text: String,
+    onClick: () -> Unit,
+    enabled: Boolean = true,
+    loading: Boolean = false,
+) {
+    Button(
+        onClick = onClick,
+        enabled = enabled && !loading,
+        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2563EB)),
+    ) {
+        if (loading) {
+            CircularProgressIndicator(
+                modifier = Modifier.padding(2.dp).size(16.dp),
+                color = Color.White,
+                strokeWidth = 2.dp,
+            )
+        } else {
+            Text(text, color = Color.White, fontWeight = FontWeight.SemiBold)
+        }
+    }
+}
+
+@Composable
+private fun Hint(text: String) {
+    Text(text, fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
 }

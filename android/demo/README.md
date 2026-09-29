@@ -8,8 +8,14 @@ real customer data. Same flow as the React Native demo in
 [`sense-sdk-kit/example`](../../example), rebuilt natively.
 
 All the actual logic lives in the SDK (`../sdk`); this app is a thin
-Jetpack Compose UI wrapper around its functions, in
-[`MainActivity.kt`](app/src/main/kotlin/com/coiliiot/sensesdkdemo/MainActivity.kt).
+Jetpack Compose UI wrapper around its functions —
+[`DemoViewModel.kt`](app/src/main/kotlin/com/coiliiot/sensesdkdemo/DemoViewModel.kt)
+holds the state and calls the SDK, and
+[`MainActivity.kt`](app/src/main/kotlin/com/coiliiot/sensesdkdemo/MainActivity.kt)
+just renders it, mirroring the RN example's structure/interaction model
+(per-action busy state, per-row status, a separate "claimed sensors"
+section with a cached last-read display) fairly closely, not just its
+feature list.
 
 ## Setup
 
@@ -60,12 +66,39 @@ instance directly from the config object in `MainActivity.kt`, which is
 the whole point of that design — it doesn't need a native app
 registration tied to this project's package name.
 
-## What hasn't been verified
+## What's been verified on real hardware
 
-This has been built and its manifest inspected (confirming the SDK's
-Bluetooth permissions and Firebase's internal activities all merge in
-correctly), but it has **not been run on a real device or emulator** —
-no Android emulator or connected device was available in the environment
-this was built in. First real run is the first real test of BLE
-scanning/provisioning end to end, and of the "no native Firebase config
-needed" assumption above holding up at runtime, not just at build time.
+The full flow — sign in, scan, connect, send WiFi credentials, register
+gateway, claim a sensor — has been run end to end on a real device against
+a real RG-RW10 gateway and completed successfully. That's the SDK itself
+validated for real, including `decodeGatewayId`'s BLE manufacturer-data
+byte layout (see `../../sense-sdk/android/README.md`'s note on that),
+which could only ever be confirmed by an actual scan, not analysis.
+
+That same real-device pass also surfaced UI bugs no amount of build-time
+verification would have caught — a couple worth calling out since they
+were real, not cosmetic:
+
+- **A layout bug that made most buttons unreadable**: a long sensor-id
+  label sharing a `Row` with its "Claim"/"Unclaim" button had no
+  `Modifier.weight()`, so the label greedily claimed the row's width and
+  squeezed the button into a sliver narrower than a single character,
+  wrapping its own label one letter per line. Fixed by weighting the
+  label instead of the button in every row that pairs one with the
+  other.
+- **BLE scanning found nothing at all** — separately fixed, see
+  `../../sense-sdk/android/README.md`'s `neverForLocation` note.
+
+## Known limitation: state and process death
+
+State now lives in a `ViewModel` (`DemoViewModel`), which survives
+ordinary recreation — rotation, dark/light mode changes, multi-window
+resize — none of which used to be survivable when state lived directly in
+`MainActivity`'s Composable via plain `remember {}`. What it can't do:
+survive the OS killing the app's process outright while backgrounded,
+which some Android OEM skins do fairly aggressively even after a short
+screen lock. A live BLE/GATT connection can't survive that regardless of
+where UI state lives — it's gone the moment the process is, and the only
+real fix is reconnecting, same as the RN app would need after its own JS
+process restarted. If you hit this, that's expected; a fresh scan/connect
+picks back up from where you left off.
