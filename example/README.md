@@ -12,6 +12,22 @@ just a thin UI wrapper around its functions plus sign-in, in
 
 ## Setup
 
+The SDK is referenced from `../sdk/coiliiot-sense-sdk-0.1.0.tgz` — already
+wired up in `package.json`:
+
+```json
+"@coiliiot/sense-sdk": "file:../sdk/coiliiot-sense-sdk-0.1.0.tgz"
+```
+
+This points at a `.tgz` file, not a folder, so npm extracts real files
+into `node_modules` instead of symlinking — the same thing that happens
+when installing from a registry or a release URL. (Earlier versions of
+this app pointed at the `sdk/` folder directly, which npm symlinks; that
+tripped up Metro, which doesn't resolve symlinks outside its project root
+by default. Since this app is what OEM developers copy from to start
+their own, it shouldn't model a dependency pattern that breaks for
+anyone who reuses it as-is.)
+
 ```sh
 npm install
 ```

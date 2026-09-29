@@ -1,0 +1,3 @@
+<resources>
+    <style name="Theme.SenseSDKDemo" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>

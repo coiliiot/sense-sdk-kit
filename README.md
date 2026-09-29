@@ -5,63 +5,42 @@ BLE gateway provisioning, gateway/sensor registration, and reading sensor
 data, backed by Coiliiot's staging sandbox (`coiliiot-sense-staging`), not
 production.
 
-This repo ships the **compiled** SDK and full documentation, not the SDK's
-TypeScript source.
+This repo ships **compiled** SDKs and full documentation, not source —
+see each platform's own README for install/usage details and its own
+demo app to copy from freely.
 
-- **`sdk/`** — the SDK as OEM developers consume it: compiled JS + type
-  declarations (`lib/`), the packed installable tarball
-  (`coiliiot-sense-sdk-0.1.0.tgz`), and the full [API README](sdk/README.md).
-  No source files.
-- **`example/`** — a complete, buildable reference app exercising every
-  function in the SDK: sign in, scan, connect, send WiFi credentials,
-  register/remove a gateway, claim/unclaim/read sensors. Full source
-  included — copy from it freely.
+## React Native
 
-<img src="docs/demo.gif" alt="Example app: sign in, scan, provision, register, claim sensors" width="320">
+<img src="docs/demo.gif" alt="RN example app: sign in, scan, provision, register, claim sensors" width="320">
 
-## Setup
+- **[`sdk/`](sdk)** — compiled JS + type declarations (`lib/`), the packed
+  installable tarball, and the full [API README](sdk/README.md). No
+  TypeScript source.
+- **[`example/`](example)** — a complete, buildable reference app. See
+  [`example/README.md`](example/README.md) for setup, the test account,
+  and troubleshooting.
 
-The example app depends on the SDK the same way any consumer would —
-installed from the tarball in `sdk/`, already wired up in
-`example/package.json`:
+## Android
 
-```json
-"@coiliiot/sense-sdk": "file:../sdk/coiliiot-sense-sdk-0.1.0.tgz"
-```
+- **[`android/sdk/`](android/sdk)** — the compiled `.aar` and the full
+  [API README](android/sdk/README.md). No Kotlin source.
+- **[`android/demo/`](android/demo)** — a complete, buildable native
+  Kotlin/Compose reference app exercising the same flow as the RN
+  example. See [`android/demo/README.md`](android/demo/README.md) for
+  setup, the test account, and what hasn't been verified yet (no
+  Bluetooth hardware or emulator was available where this was built —
+  see that README before relying on it).
 
-This points at a `.tgz` file, not a folder, so npm extracts real files
-into `node_modules` instead of symlinking — the same thing that happens
-when installing from a registry or a release URL. (Earlier versions of
-this repo pointed at the `sdk/` folder directly, which npm symlinks; that
-tripped up Metro, which doesn't resolve symlinks outside its project root
-by default. Since this repo is the thing OEM developers copy from to
-start their own app, we'd rather the example not model a pattern that
-breaks for anyone who reuses it as-is.)
+This is for OEM partners building a native (or Kotlin Multiplatform)
+Android app instead of React Native — a native Android library plugs
+into a KMP app directly, with no bridge needed.
 
-```sh
-cd example
-npm install
-```
+## iOS
 
-iOS also needs CocoaPods, from `example/`:
+Not yet available.
 
-```sh
-bundle install
-bundle exec pod install
-```
+## Distribution
 
-Then run the example same as any React Native app (`npm start`, then
-`npm run ios` or `npm run android` in a second terminal). See
-[`example/README.md`](example/README.md) for the test account and other
-specifics.
-
-## Using the SDK in your own app
-
-Install directly from the tarball:
-
-```sh
-npm install /path/to/sense-sdk-kit/sdk/coiliiot-sense-sdk-0.1.0.tgz
-```
-
-Then follow [`sdk/README.md`](sdk/README.md) for the full API reference and
-usage walkthrough.
+Each platform ships from a [GitHub Release](../../releases) with its
+compiled artifact attached, so you don't need repo tree access to grab a
+copy — see each platform's own README for the exact install command.
