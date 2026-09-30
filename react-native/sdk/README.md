@@ -6,7 +6,7 @@ a sandbox SDK backed by Coiliiot's staging environment — not production,
 and not the full Coiliiot Sense app or cloud.
 
 A working reference app using every function below lives in the sibling
-[`example/`](../example) directory of this repo.
+[`demo/`](../demo) directory of this repo.
 
 ## Install
 

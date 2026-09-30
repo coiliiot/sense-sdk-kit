@@ -11,14 +11,14 @@ demo app to copy from freely.
 
 ## React Native
 
-<img src="docs/demo.gif" alt="RN example app: sign in, scan, provision, register, claim sensors" width="320">
+<img src="docs/demo.gif" alt="RN demo app: sign in, scan, provision, register, claim sensors" width="320">
 
 - **[`react-native/sdk/`](react-native/sdk)** — compiled JS + type
   declarations (`lib/`), the packed installable tarball, and the full
   [API README](react-native/sdk/README.md). No TypeScript source.
-- **[`react-native/example/`](react-native/example)** — a complete,
+- **[`react-native/demo/`](react-native/demo)** — a complete,
   buildable reference app. See
-  [`react-native/example/README.md`](react-native/example/README.md) for
+  [`react-native/demo/README.md`](react-native/demo/README.md) for
   setup, the test account, and troubleshooting.
 
 ## Android
@@ -27,7 +27,7 @@ demo app to copy from freely.
   [API README](android/sdk/README.md). No Kotlin source.
 - **[`android/demo/`](android/demo)** — a complete, buildable native
   Kotlin/Compose reference app exercising the same flow as the RN
-  example, and verified end to end on real hardware. See
+  demo, and verified end to end on real hardware. See
   [`android/demo/README.md`](android/demo/README.md) for setup, the test
   account, and what that real-device pass found.
 

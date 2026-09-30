@@ -5,7 +5,7 @@ end: sign in → scan → provision a gateway over BLE → register it → claim
 a sensor → read its latest data. This targets Coiliiot's **staging**
 sandbox (`coiliiot-sense-staging`), not production — nothing here touches
 real customer data. Same flow as the React Native demo in
-[`sense-sdk-kit/react-native/example`](../../react-native/example),
+[`sense-sdk-kit/react-native/demo`](../../react-native/demo),
 rebuilt natively.
 
 All the actual logic lives in the SDK (`../sdk`); this app is a thin
@@ -13,7 +13,7 @@ Jetpack Compose UI wrapper around its functions —
 [`DemoViewModel.kt`](app/src/main/kotlin/com/coiliiot/sensesdkdemo/DemoViewModel.kt)
 holds the state and calls the SDK, and
 [`MainActivity.kt`](app/src/main/kotlin/com/coiliiot/sensesdkdemo/MainActivity.kt)
-just renders it, mirroring the RN example's structure/interaction model
+just renders it, mirroring the RN demo's structure/interaction model
 (per-action busy state, per-row status, a separate "claimed sensors"
 section with a cached last-read display) fairly closely, not just its
 feature list.
