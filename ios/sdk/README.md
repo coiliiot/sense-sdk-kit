@@ -10,8 +10,10 @@ A working reference app using every function below lives in the sibling
 
 ## Install
 
-Drag `CoiliiotSenseSDK.xcframework` into your Xcode project (or add it
-under your target's **Frameworks, Libraries, and Embedded Content**,
+Download and unzip `CoiliiotSenseSDK-0.2.0.xcframework.zip` from the
+[latest release](https://github.com/coiliiot/sense-sdk-kit/releases/latest),
+then drag `CoiliiotSenseSDK.xcframework` into your Xcode project (or add
+it under your target's **Frameworks, Libraries, and Embedded Content**,
 set to **Embed & Sign**). That's it — **no peer dependencies to add**.
 Unlike the Android/React Native SDKs, this framework has Firebase
 compiled in already, so there's nothing else to declare.

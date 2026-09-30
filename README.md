@@ -53,8 +53,7 @@ before integrating if your own app also uses Firebase for anything else.
 
 ## Distribution
 
-Android and React Native ship from a [GitHub Release](../../releases)
-with their compiled artifacts attached, so you don't need repo tree
-access to grab a copy — see each platform's own README for the exact
-install command. The iOS `.xcframework` isn't attached to a release yet;
-for now, get it from `ios/sdk/` in this repo tree.
+Every platform ships from a [GitHub Release](../../releases) with its
+compiled artifact attached (the iOS one as a zipped `.xcframework`), so
+you don't need repo tree access to grab a copy — see each platform's own
+README for the exact install command.

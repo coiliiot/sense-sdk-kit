@@ -10,7 +10,7 @@ A working reference app using every function below lives in the sibling
 
 ## Install
 
-Download the tarball from the [v0.1.0 release](https://github.com/coiliiot/sense-sdk-kit/releases/tag/v0.1.0), then:
+Download the tarball from the [latest release](https://github.com/coiliiot/sense-sdk-kit/releases/latest), then:
 
 ```
 npm install ./coiliiot-sense-sdk-0.1.0.tgz
@@ -19,7 +19,7 @@ npm install ./coiliiot-sense-sdk-0.1.0.tgz
 Or install directly from the release URL without downloading it first:
 
 ```
-npm install https://github.com/coiliiot/sense-sdk-kit/releases/download/v0.1.0/coiliiot-sense-sdk-0.1.0.tgz
+npm install https://github.com/coiliiot/sense-sdk-kit/releases/download/v0.2.0/coiliiot-sense-sdk-0.1.0.tgz
 ```
 
 Peer dependencies (install in your own app if not already present):
