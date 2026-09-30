@@ -42,8 +42,8 @@ bundle exec pod install
 ## Test account
 
 There's no self-serve sign-up — sandbox accounts are provisioned
-individually per OEM. Coiliiot will give you a test account's email and
-password separately; enter them on the app's sign-in screen.
+individually per OEM. Contact Coiliiot for a test account's email and
+password; enter them on the app's sign-in screen.
 
 ## Run
 
@@ -55,10 +55,12 @@ npm run ios        # or: npm run android
 ## Before BLE provisioning will actually do anything
 
 You need a physical Coiliiot RG-RW10 gateway already flashed with firmware
-pointed at `coiliiot-sense-staging` (not the default production build) —
-see `Sense-RG-RW10-firmware`. A gateway running production firmware will
-never appear to have provisioned successfully against this app, since it's
-talking to a different Firebase project entirely.
+pointed at `coiliiot-sense-staging` (not the default production build). A
+gateway running production firmware will never appear to have provisioned
+successfully against this app, since it's talking to a different Firebase
+project entirely. If your gateway is currently connected to production,
+this isn't something you can do yourself — contact Coiliiot to have it
+OTA'd to staging firmware first.
 
 ## A design choice worth knowing about
 

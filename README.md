@@ -9,6 +9,24 @@ This repo ships **compiled** SDKs and full documentation, not source —
 see each platform's own README for install/usage details and its own
 demo app to copy from freely.
 
+## Before you start
+
+Two things only Coiliiot can set up for you — reach out before trying to
+run any of the demo apps or integrate an SDK, or you'll be stuck at the
+sign-in screen or unable to provision a gateway:
+
+- **A staging test account.** There's no self-serve sign-up — sandbox
+  accounts on `coiliiot-sense-staging` are provisioned individually per
+  OEM, to keep each partner's test data isolated. Contact Coiliiot for a
+  test account's email and password.
+- **A gateway flashed for staging.** If your RG-RW10 gateway is already
+  connected to production, it needs to be OTA'd to firmware pointed at
+  `coiliiot-sense-staging` before it'll provision successfully against
+  any of these demo apps — a gateway running production firmware will
+  never appear to work here, since it's talking to a different Firebase
+  project entirely. This isn't something you can do yourself; contact
+  Coiliiot to have it OTA'd.
+
 ## React Native
 
 <img src="docs/demo.gif" alt="RN demo app: sign in, scan, provision, register, claim sensors" width="320">
