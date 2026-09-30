@@ -27,10 +27,9 @@ demo app to copy from freely.
   [API README](android/sdk/README.md). No Kotlin source.
 - **[`android/demo/`](android/demo)** — a complete, buildable native
   Kotlin/Compose reference app exercising the same flow as the RN
-  example. See [`android/demo/README.md`](android/demo/README.md) for
-  setup, the test account, and what hasn't been verified yet (no
-  Bluetooth hardware or emulator was available where this was built —
-  see that README before relying on it).
+  example, and verified end to end on real hardware. See
+  [`android/demo/README.md`](android/demo/README.md) for setup, the test
+  account, and what that real-device pass found.
 
 This is for OEM partners building a native (or Kotlin Multiplatform)
 Android app instead of React Native — a native Android library plugs

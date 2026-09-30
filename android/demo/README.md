@@ -5,7 +5,8 @@ end: sign in → scan → provision a gateway over BLE → register it → claim
 a sensor → read its latest data. This targets Coiliiot's **staging**
 sandbox (`coiliiot-sense-staging`), not production — nothing here touches
 real customer data. Same flow as the React Native demo in
-[`sense-sdk-kit/example`](../../example), rebuilt natively.
+[`sense-sdk-kit/react-native/example`](../../react-native/example),
+rebuilt natively.
 
 All the actual logic lives in the SDK (`../sdk`); this app is a thin
 Jetpack Compose UI wrapper around its functions —
@@ -54,8 +55,19 @@ app, since it's talking to a different Firebase project entirely.
 
 Tapping "Scan for Gateways" triggers Android's runtime permission dialog
 for Bluetooth/location — this is the app's own responsibility, not the
-SDK's (see `sdk/README.md`'s "Why `scanForGateways()` doesn't request
-permissions itself").
+SDK's (see [`../sdk/README.md`](../sdk/README.md)'s "Why
+`scanForGateways()` doesn't request permissions itself").
+
+The manifest also declares `BLUETOOTH_SCAN` with
+`android:usesPermissionFlags="neverForLocation"`: this app identifies
+gateways by the id encoded in their advertisement and uses RSSI only to
+let a user pick between multiple gateways in range — it never derives
+physical location from scan results. Without that flag, Android
+additionally requires the device's system-wide Location Services toggle
+to be on before `BLUETOOTH_SCAN` returns any results at all (API 31+),
+even with the permission itself granted — a real, easy-to-hit cause of
+"scan runs but finds nothing" if you're adapting this into your own
+manifest.
 
 ## A design choice worth knowing about
 
@@ -71,9 +83,12 @@ registration tied to this project's package name.
 The full flow — sign in, scan, connect, send WiFi credentials, register
 gateway, claim a sensor — has been run end to end on a real device against
 a real RG-RW10 gateway and completed successfully. That's the SDK itself
-validated for real, including `decodeGatewayId`'s BLE manufacturer-data
-byte layout (see `../../sense-sdk/android/README.md`'s note on that),
-which could only ever be confirmed by an actual scan, not analysis.
+validated for real, including its BLE manufacturer-data byte layout: the
+gateway id `scanForGateways()` decodes from the advertisement has to come
+out identical to what the id was minted from at manufacturing time, or
+`registerGateway()` would reference a different gateway than the one you
+scanned — something only an actual scan against real hardware can confirm,
+not source review.
 
 That same real-device pass also surfaced UI bugs no amount of build-time
 verification would have caught — a couple worth calling out since they
