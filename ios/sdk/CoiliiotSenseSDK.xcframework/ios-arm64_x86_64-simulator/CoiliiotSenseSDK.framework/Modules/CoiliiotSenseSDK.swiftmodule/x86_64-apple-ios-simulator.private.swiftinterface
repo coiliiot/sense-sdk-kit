@@ -1,0 +1,106 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.4 effective-5.10 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)
+// swift-module-flags: -target x86_64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -language-mode 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name CoiliiotSenseSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.4
+import CoreBluetooth
+import Foundation
+import Swift
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public struct SdkUser {
+  public let uid: Swift::String
+  public let email: Swift::String?
+}
+public func signIn(email: Swift::String, password: Swift::String) async throws -> CoiliiotSenseSDK::SdkUser
+public func signOut() throws
+public func onAuthStateChanged(callback: @escaping (CoiliiotSenseSDK::SdkUser?) -> Swift::Void) throws -> () -> Swift::Void
+public func getCurrentUserId() throws -> Swift::String
+public enum ProvisioningStage {
+  case wifiOk, ok, wifiFail, serverFail
+  public static func == (a: CoiliiotSenseSDK::ProvisioningStage, b: CoiliiotSenseSDK::ProvisioningStage) -> Swift::Bool
+  public func hash(into hasher: inout Swift::Hasher)
+  public var hashValue: Swift::Int {
+    get
+  }
+}
+public struct DiscoveredGateway {
+  public let id: Swift::String
+  public let model: Swift::String
+  public let rssi: Swift::Int?
+}
+@discardableResult
+public func scanForGateways(onUpdate: @escaping ([CoiliiotSenseSDK::DiscoveredGateway]) -> Swift::Void, onError: ((any Swift::Error) -> Swift::Void)? = nil, onEnd: (() -> Swift::Void)? = nil) -> () -> Swift::Void
+public func connectToGateway(_ gatewayId: Swift::String) async throws
+public func disconnectFromGateway(_ gatewayId: Swift::String)
+public func sendWifiCredentials(_ gatewayId: Swift::String, ssid: Swift::String, password: Swift::String, onProgress: ((CoiliiotSenseSDK::ProvisioningStage) -> Swift::Void)? = nil) async throws
+public struct SdkGateway {
+  public let gateway_id: Swift::String
+  public let user_id: Swift::String
+  public let nickname: Swift::String
+  public let model: Swift::String
+  public let created_at: Swift::String
+  public let last_seen: Swift::Int64
+}
+public struct LatestSensorData {
+  public let last_seen: Swift::Int64
+  public let current_data: [Swift::String : Swift::Double]
+  public let rssi: Swift::Double?
+  public let battery: Swift::Double?
+}
+public struct SdkSensor {
+  public let sensor_id: Swift::String
+  public let model: Swift::String?
+  public let is_registered: Swift::Bool
+  public let last_seen: Swift::Int64
+  public let current_data: [Swift::String : Swift::Double]
+  public let rssi: Swift::Double?
+  public let battery: Swift::Double?
+}
+public func registerGateway(_ gatewayId: Swift::String) async throws -> CoiliiotSenseSDK::SdkGateway
+public func removeGateway(_ gatewayId: Swift::String) async throws
+public func registerSensor(gatewayId: Swift::String, sensorId: Swift::String) async throws
+public func unregisterSensor(gatewayId: Swift::String, sensorId: Swift::String) async throws
+public func getLatestSensorData(gatewayId: Swift::String, sensorId: Swift::String) async throws -> CoiliiotSenseSDK::LatestSensorData
+public func listenForSensors(_ gatewayId: Swift::String, callback: @escaping ([CoiliiotSenseSDK::SdkSensor]) -> Swift::Void) throws -> () -> Swift::Void
+public func listenForGateways(callback: @escaping ([CoiliiotSenseSDK::SdkGateway]) -> Swift::Void) throws -> () -> Swift::Void
+public enum SenseSdk {
+  public static func initSdk(config: CoiliiotSenseSDK::SenseSdkConfig)
+}
+public struct SenseSdkConfig {
+  public let apiKey: Swift::String
+  public let appId: Swift::String
+  public let projectId: Swift::String
+  public let databaseURL: Swift::String
+  public let storageBucket: Swift::String?
+  public let messagingSenderId: Swift::String
+  public init(apiKey: Swift::String, appId: Swift::String, projectId: Swift::String, databaseURL: Swift::String, storageBucket: Swift::String? = nil, messagingSenderId: Swift::String)
+}
+public enum SenseSdkError : Swift::Error, Foundation::LocalizedError {
+  case notInitialized
+  case notSignedIn
+  case gatewayNotFound(gatewayId: Swift::String)
+  case gatewayAlreadyClaimed(gatewayId: Swift::String)
+  case gatewayNotOwned(gatewayId: Swift::String)
+  case noOwnershipRecord(gatewayId: Swift::String)
+  case sensorAlreadyClaimed(sensorId: Swift::String)
+  case sensorNotOwned(sensorId: Swift::String)
+  case noSensorOwnershipRecord(sensorId: Swift::String)
+  case noSensorData(gatewayId: Swift::String, sensorId: Swift::String)
+  case gatewayNotScanned(gatewayId: Swift::String)
+  case gatewayNotConnected(gatewayId: Swift::String)
+  case bluetoothUnavailable(state: Swift::String)
+  case bluetoothPermissionDenied
+  case scanFailed(underlying: any Swift::Error)
+  case connectTimedOut(gatewayId: Swift::String)
+  case connectionLost(gatewayId: Swift::String)
+  case serviceDiscoveryFailed(gatewayId: Swift::String)
+  case wifiCredentialsRejected
+  case gatewayReachedCloudFailed
+  case unexpectedProvisioningResult(Swift::String)
+  public var errorDescription: Swift::String? {
+    get
+  }
+}
+extension CoiliiotSenseSDK::ProvisioningStage : Swift::Equatable {}
+extension CoiliiotSenseSDK::ProvisioningStage : Swift::Hashable {}

@@ -1,0 +1,4107 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "CoiliiotSenseSDK",
+    "printedName": "CoiliiotSenseSDK",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "FirebaseAuth",
+        "printedName": "FirebaseAuth",
+        "declKind": "Import",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SdkUser",
+        "printedName": "SdkUser",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "uid",
+            "printedName": "uid",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK7SdkUserV3uidSSvp",
+            "mangledName": "$s16CoiliiotSenseSDK7SdkUserV3uidSSvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK7SdkUserV3uidSSvg",
+                "mangledName": "$s16CoiliiotSenseSDK7SdkUserV3uidSSvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "email",
+            "printedName": "email",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK7SdkUserV5emailSSSgvp",
+            "mangledName": "$s16CoiliiotSenseSDK7SdkUserV5emailSSSgvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK7SdkUserV5emailSSSgvg",
+                "mangledName": "$s16CoiliiotSenseSDK7SdkUserV5emailSSSgvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:16CoiliiotSenseSDK7SdkUserV",
+        "mangledName": "$s16CoiliiotSenseSDK7SdkUserV",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Function",
+        "name": "signIn",
+        "printedName": "signIn(email:password:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "SdkUser",
+            "printedName": "CoiliiotSenseSDK.SdkUser",
+            "usr": "s:16CoiliiotSenseSDK7SdkUserV"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "String",
+            "printedName": "Swift.String",
+            "usr": "s:SS"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "String",
+            "printedName": "Swift.String",
+            "usr": "s:SS"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:16CoiliiotSenseSDK6signIn5email8passwordAA7SdkUserVSS_SStYaKF",
+        "mangledName": "$s16CoiliiotSenseSDK6signIn5email8passwordAA7SdkUserVSS_SStYaKF",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "throwing": true,
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "signOut",
+        "printedName": "signOut()",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Void",
+            "printedName": "()"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:16CoiliiotSenseSDK7signOutyyKF",
+        "mangledName": "$s16CoiliiotSenseSDK7signOutyyKF",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "throwing": true,
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "onAuthStateChanged",
+        "printedName": "onAuthStateChanged(callback:)",
+        "children": [
+          {
+            "kind": "TypeFunc",
+            "name": "Function",
+            "printedName": "() -> ()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ]
+          },
+          {
+            "kind": "TypeFunc",
+            "name": "Function",
+            "printedName": "(CoiliiotSenseSDK.SdkUser?) -> ()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "CoiliiotSenseSDK.SdkUser?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SdkUser",
+                    "printedName": "CoiliiotSenseSDK.SdkUser",
+                    "usr": "s:16CoiliiotSenseSDK7SdkUserV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ]
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:16CoiliiotSenseSDK18onAuthStateChanged8callbackyycyAA7SdkUserVSgc_tKF",
+        "mangledName": "$s16CoiliiotSenseSDK18onAuthStateChanged8callbackyycyAA7SdkUserVSgc_tKF",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "throwing": true,
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "getCurrentUserId",
+        "printedName": "getCurrentUserId()",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "String",
+            "printedName": "Swift.String",
+            "usr": "s:SS"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:16CoiliiotSenseSDK16getCurrentUserIdSSyKF",
+        "mangledName": "$s16CoiliiotSenseSDK16getCurrentUserIdSSyKF",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "throwing": true,
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Import",
+        "name": "CoreBluetooth",
+        "printedName": "CoreBluetooth",
+        "declKind": "Import",
+        "moduleName": "CoiliiotSenseSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "CoiliiotSenseSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ProvisioningStage",
+        "printedName": "ProvisioningStage",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "wifiOk",
+            "printedName": "wifiOk",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.ProvisioningStage.Type) -> CoiliiotSenseSDK.ProvisioningStage",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProvisioningStage",
+                    "printedName": "CoiliiotSenseSDK.ProvisioningStage",
+                    "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.ProvisioningStage.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProvisioningStage",
+                        "printedName": "CoiliiotSenseSDK.ProvisioningStage",
+                        "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO6wifiOkyA2CmF",
+            "mangledName": "$s16CoiliiotSenseSDK17ProvisioningStageO6wifiOkyA2CmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "ok",
+            "printedName": "ok",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.ProvisioningStage.Type) -> CoiliiotSenseSDK.ProvisioningStage",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProvisioningStage",
+                    "printedName": "CoiliiotSenseSDK.ProvisioningStage",
+                    "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.ProvisioningStage.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProvisioningStage",
+                        "printedName": "CoiliiotSenseSDK.ProvisioningStage",
+                        "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO2okyA2CmF",
+            "mangledName": "$s16CoiliiotSenseSDK17ProvisioningStageO2okyA2CmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "wifiFail",
+            "printedName": "wifiFail",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.ProvisioningStage.Type) -> CoiliiotSenseSDK.ProvisioningStage",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProvisioningStage",
+                    "printedName": "CoiliiotSenseSDK.ProvisioningStage",
+                    "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.ProvisioningStage.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProvisioningStage",
+                        "printedName": "CoiliiotSenseSDK.ProvisioningStage",
+                        "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO8wifiFailyA2CmF",
+            "mangledName": "$s16CoiliiotSenseSDK17ProvisioningStageO8wifiFailyA2CmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "serverFail",
+            "printedName": "serverFail",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.ProvisioningStage.Type) -> CoiliiotSenseSDK.ProvisioningStage",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProvisioningStage",
+                    "printedName": "CoiliiotSenseSDK.ProvisioningStage",
+                    "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.ProvisioningStage.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProvisioningStage",
+                        "printedName": "CoiliiotSenseSDK.ProvisioningStage",
+                        "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO10serverFailyA2CmF",
+            "mangledName": "$s16CoiliiotSenseSDK17ProvisioningStageO10serverFailyA2CmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Function",
+            "name": "==",
+            "printedName": "==(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ProvisioningStage",
+                "printedName": "CoiliiotSenseSDK.ProvisioningStage",
+                "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ProvisioningStage",
+                "printedName": "CoiliiotSenseSDK.ProvisioningStage",
+                "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO2eeoiySbAC_ACtFZ",
+            "mangledName": "$s16CoiliiotSenseSDK17ProvisioningStageO2eeoiySbAC_ACtFZ",
+            "moduleName": "CoiliiotSenseSDK",
+            "static": true,
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO9hashValueSivp",
+            "mangledName": "$s16CoiliiotSenseSDK17ProvisioningStageO9hashValueSivp",
+            "moduleName": "CoiliiotSenseSDK",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO9hashValueSivg",
+                "mangledName": "$s16CoiliiotSenseSDK17ProvisioningStageO9hashValueSivg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO4hash4intoys6HasherVz_tF",
+            "mangledName": "$s16CoiliiotSenseSDK17ProvisioningStageO4hash4intoys6HasherVz_tF",
+            "moduleName": "CoiliiotSenseSDK",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO",
+        "mangledName": "$s16CoiliiotSenseSDK17ProvisioningStageO",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "DiscoveredGateway",
+        "printedName": "DiscoveredGateway",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "id",
+            "printedName": "id",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK17DiscoveredGatewayV2idSSvp",
+            "mangledName": "$s16CoiliiotSenseSDK17DiscoveredGatewayV2idSSvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK17DiscoveredGatewayV2idSSvg",
+                "mangledName": "$s16CoiliiotSenseSDK17DiscoveredGatewayV2idSSvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "model",
+            "printedName": "model",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK17DiscoveredGatewayV5modelSSvp",
+            "mangledName": "$s16CoiliiotSenseSDK17DiscoveredGatewayV5modelSSvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK17DiscoveredGatewayV5modelSSvg",
+                "mangledName": "$s16CoiliiotSenseSDK17DiscoveredGatewayV5modelSSvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "rssi",
+            "printedName": "rssi",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK17DiscoveredGatewayV4rssiSiSgvp",
+            "mangledName": "$s16CoiliiotSenseSDK17DiscoveredGatewayV4rssiSiSgvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Int?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK17DiscoveredGatewayV4rssiSiSgvg",
+                "mangledName": "$s16CoiliiotSenseSDK17DiscoveredGatewayV4rssiSiSgvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:16CoiliiotSenseSDK17DiscoveredGatewayV",
+        "mangledName": "$s16CoiliiotSenseSDK17DiscoveredGatewayV",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Function",
+        "name": "scanForGateways",
+        "printedName": "scanForGateways(onUpdate:onError:onEnd:)",
+        "children": [
+          {
+            "kind": "TypeFunc",
+            "name": "Function",
+            "printedName": "() -> ()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ]
+          },
+          {
+            "kind": "TypeFunc",
+            "name": "Function",
+            "printedName": "([CoiliiotSenseSDK.DiscoveredGateway]) -> ()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[CoiliiotSenseSDK.DiscoveredGateway]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DiscoveredGateway",
+                    "printedName": "CoiliiotSenseSDK.DiscoveredGateway",
+                    "usr": "s:16CoiliiotSenseSDK17DiscoveredGatewayV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ]
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Optional",
+            "printedName": "((any Swift.Error) -> ())?",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(any Swift.Error) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Error",
+                    "printedName": "any Swift.Error",
+                    "usr": "s:s5ErrorP"
+                  }
+                ]
+              }
+            ],
+            "hasDefaultArg": true,
+            "usr": "s:Sq"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Optional",
+            "printedName": "(() -> ())?",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
+              }
+            ],
+            "hasDefaultArg": true,
+            "usr": "s:Sq"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:16CoiliiotSenseSDK15scanForGateways8onUpdate0G5Error0G3EndyycySayAA17DiscoveredGatewayVGc_ys0I0_pcSgyycSgtF",
+        "mangledName": "$s16CoiliiotSenseSDK15scanForGateways8onUpdate0G5Error0G3EndyycySayAA17DiscoveredGatewayVGc_ys0I0_pcSgyycSgtF",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "DiscardableResult",
+          "RawDocComment"
+        ],
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "connectToGateway",
+        "printedName": "connectToGateway(_:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Void",
+            "printedName": "()"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "String",
+            "printedName": "Swift.String",
+            "usr": "s:SS"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:16CoiliiotSenseSDK16connectToGatewayyySSYaKF",
+        "mangledName": "$s16CoiliiotSenseSDK16connectToGatewayyySSYaKF",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "throwing": true,
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "disconnectFromGateway",
+        "printedName": "disconnectFromGateway(_:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Void",
+            "printedName": "()"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "String",
+            "printedName": "Swift.String",
+            "usr": "s:SS"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:16CoiliiotSenseSDK21disconnectFromGatewayyySSF",
+        "mangledName": "$s16CoiliiotSenseSDK21disconnectFromGatewayyySSF",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "sendWifiCredentials",
+        "printedName": "sendWifiCredentials(_:ssid:password:onProgress:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Void",
+            "printedName": "()"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "String",
+            "printedName": "Swift.String",
+            "usr": "s:SS"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "String",
+            "printedName": "Swift.String",
+            "usr": "s:SS"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "String",
+            "printedName": "Swift.String",
+            "usr": "s:SS"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Optional",
+            "printedName": "((CoiliiotSenseSDK.ProvisioningStage) -> ())?",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.ProvisioningStage) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProvisioningStage",
+                    "printedName": "CoiliiotSenseSDK.ProvisioningStage",
+                    "usr": "s:16CoiliiotSenseSDK17ProvisioningStageO"
+                  }
+                ]
+              }
+            ],
+            "hasDefaultArg": true,
+            "usr": "s:Sq"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:16CoiliiotSenseSDK19sendWifiCredentials_4ssid8password10onProgressySS_S2SyAA17ProvisioningStageOcSgtYaKF",
+        "mangledName": "$s16CoiliiotSenseSDK19sendWifiCredentials_4ssid8password10onProgressySS_S2SyAA17ProvisioningStageOcSgtYaKF",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "throwing": true,
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Import",
+        "name": "FirebaseDatabase",
+        "printedName": "FirebaseDatabase",
+        "declKind": "Import",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "FirebaseFirestore",
+        "printedName": "FirebaseFirestore",
+        "declKind": "Import",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "CoiliiotSenseSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SdkGateway",
+        "printedName": "SdkGateway",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "gateway_id",
+            "printedName": "gateway_id",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK10SdkGatewayV10gateway_idSSvp",
+            "mangledName": "$s16CoiliiotSenseSDK10SdkGatewayV10gateway_idSSvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK10SdkGatewayV10gateway_idSSvg",
+                "mangledName": "$s16CoiliiotSenseSDK10SdkGatewayV10gateway_idSSvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "user_id",
+            "printedName": "user_id",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK10SdkGatewayV7user_idSSvp",
+            "mangledName": "$s16CoiliiotSenseSDK10SdkGatewayV7user_idSSvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK10SdkGatewayV7user_idSSvg",
+                "mangledName": "$s16CoiliiotSenseSDK10SdkGatewayV7user_idSSvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "nickname",
+            "printedName": "nickname",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK10SdkGatewayV8nicknameSSvp",
+            "mangledName": "$s16CoiliiotSenseSDK10SdkGatewayV8nicknameSSvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK10SdkGatewayV8nicknameSSvg",
+                "mangledName": "$s16CoiliiotSenseSDK10SdkGatewayV8nicknameSSvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "model",
+            "printedName": "model",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK10SdkGatewayV5modelSSvp",
+            "mangledName": "$s16CoiliiotSenseSDK10SdkGatewayV5modelSSvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK10SdkGatewayV5modelSSvg",
+                "mangledName": "$s16CoiliiotSenseSDK10SdkGatewayV5modelSSvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "created_at",
+            "printedName": "created_at",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK10SdkGatewayV10created_atSSvp",
+            "mangledName": "$s16CoiliiotSenseSDK10SdkGatewayV10created_atSSvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK10SdkGatewayV10created_atSSvg",
+                "mangledName": "$s16CoiliiotSenseSDK10SdkGatewayV10created_atSSvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "last_seen",
+            "printedName": "last_seen",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int64",
+                "printedName": "Swift.Int64",
+                "usr": "s:s5Int64V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK10SdkGatewayV9last_seens5Int64Vvp",
+            "mangledName": "$s16CoiliiotSenseSDK10SdkGatewayV9last_seens5Int64Vvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int64",
+                    "printedName": "Swift.Int64",
+                    "usr": "s:s5Int64V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK10SdkGatewayV9last_seens5Int64Vvg",
+                "mangledName": "$s16CoiliiotSenseSDK10SdkGatewayV9last_seens5Int64Vvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:16CoiliiotSenseSDK10SdkGatewayV",
+        "mangledName": "$s16CoiliiotSenseSDK10SdkGatewayV",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "LatestSensorData",
+        "printedName": "LatestSensorData",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "last_seen",
+            "printedName": "last_seen",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int64",
+                "printedName": "Swift.Int64",
+                "usr": "s:s5Int64V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK16LatestSensorDataV9last_seens5Int64Vvp",
+            "mangledName": "$s16CoiliiotSenseSDK16LatestSensorDataV9last_seens5Int64Vvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int64",
+                    "printedName": "Swift.Int64",
+                    "usr": "s:s5Int64V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK16LatestSensorDataV9last_seens5Int64Vvg",
+                "mangledName": "$s16CoiliiotSenseSDK16LatestSensorDataV9last_seens5Int64Vvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "current_data",
+            "printedName": "current_data",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Swift.Double]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK16LatestSensorDataV12current_dataSDySSSdGvp",
+            "mangledName": "$s16CoiliiotSenseSDK16LatestSensorDataV12current_dataSDySSSdGvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Swift.Double]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Double",
+                        "printedName": "Swift.Double",
+                        "usr": "s:Sd"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK16LatestSensorDataV12current_dataSDySSSdGvg",
+                "mangledName": "$s16CoiliiotSenseSDK16LatestSensorDataV12current_dataSDySSSdGvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "rssi",
+            "printedName": "rssi",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Double?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK16LatestSensorDataV4rssiSdSgvp",
+            "mangledName": "$s16CoiliiotSenseSDK16LatestSensorDataV4rssiSdSgvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Double?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Double",
+                        "printedName": "Swift.Double",
+                        "usr": "s:Sd"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK16LatestSensorDataV4rssiSdSgvg",
+                "mangledName": "$s16CoiliiotSenseSDK16LatestSensorDataV4rssiSdSgvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "battery",
+            "printedName": "battery",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Double?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK16LatestSensorDataV7batterySdSgvp",
+            "mangledName": "$s16CoiliiotSenseSDK16LatestSensorDataV7batterySdSgvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Double?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Double",
+                        "printedName": "Swift.Double",
+                        "usr": "s:Sd"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK16LatestSensorDataV7batterySdSgvg",
+                "mangledName": "$s16CoiliiotSenseSDK16LatestSensorDataV7batterySdSgvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:16CoiliiotSenseSDK16LatestSensorDataV",
+        "mangledName": "$s16CoiliiotSenseSDK16LatestSensorDataV",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SdkSensor",
+        "printedName": "SdkSensor",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "sensor_id",
+            "printedName": "sensor_id",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK9SdkSensorV9sensor_idSSvp",
+            "mangledName": "$s16CoiliiotSenseSDK9SdkSensorV9sensor_idSSvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK9SdkSensorV9sensor_idSSvg",
+                "mangledName": "$s16CoiliiotSenseSDK9SdkSensorV9sensor_idSSvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "model",
+            "printedName": "model",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK9SdkSensorV5modelSSSgvp",
+            "mangledName": "$s16CoiliiotSenseSDK9SdkSensorV5modelSSSgvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK9SdkSensorV5modelSSSgvg",
+                "mangledName": "$s16CoiliiotSenseSDK9SdkSensorV5modelSSSgvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "is_registered",
+            "printedName": "is_registered",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK9SdkSensorV13is_registeredSbvp",
+            "mangledName": "$s16CoiliiotSenseSDK9SdkSensorV13is_registeredSbvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK9SdkSensorV13is_registeredSbvg",
+                "mangledName": "$s16CoiliiotSenseSDK9SdkSensorV13is_registeredSbvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "last_seen",
+            "printedName": "last_seen",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int64",
+                "printedName": "Swift.Int64",
+                "usr": "s:s5Int64V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK9SdkSensorV9last_seens5Int64Vvp",
+            "mangledName": "$s16CoiliiotSenseSDK9SdkSensorV9last_seens5Int64Vvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int64",
+                    "printedName": "Swift.Int64",
+                    "usr": "s:s5Int64V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK9SdkSensorV9last_seens5Int64Vvg",
+                "mangledName": "$s16CoiliiotSenseSDK9SdkSensorV9last_seens5Int64Vvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "current_data",
+            "printedName": "current_data",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Swift.Double]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK9SdkSensorV12current_dataSDySSSdGvp",
+            "mangledName": "$s16CoiliiotSenseSDK9SdkSensorV12current_dataSDySSSdGvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Swift.Double]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Double",
+                        "printedName": "Swift.Double",
+                        "usr": "s:Sd"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK9SdkSensorV12current_dataSDySSSdGvg",
+                "mangledName": "$s16CoiliiotSenseSDK9SdkSensorV12current_dataSDySSSdGvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "rssi",
+            "printedName": "rssi",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Double?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK9SdkSensorV4rssiSdSgvp",
+            "mangledName": "$s16CoiliiotSenseSDK9SdkSensorV4rssiSdSgvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Double?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Double",
+                        "printedName": "Swift.Double",
+                        "usr": "s:Sd"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK9SdkSensorV4rssiSdSgvg",
+                "mangledName": "$s16CoiliiotSenseSDK9SdkSensorV4rssiSdSgvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "battery",
+            "printedName": "battery",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Double?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK9SdkSensorV7batterySdSgvp",
+            "mangledName": "$s16CoiliiotSenseSDK9SdkSensorV7batterySdSgvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Double?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Double",
+                        "printedName": "Swift.Double",
+                        "usr": "s:Sd"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK9SdkSensorV7batterySdSgvg",
+                "mangledName": "$s16CoiliiotSenseSDK9SdkSensorV7batterySdSgvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:16CoiliiotSenseSDK9SdkSensorV",
+        "mangledName": "$s16CoiliiotSenseSDK9SdkSensorV",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Function",
+        "name": "registerGateway",
+        "printedName": "registerGateway(_:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "SdkGateway",
+            "printedName": "CoiliiotSenseSDK.SdkGateway",
+            "usr": "s:16CoiliiotSenseSDK10SdkGatewayV"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "String",
+            "printedName": "Swift.String",
+            "usr": "s:SS"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:16CoiliiotSenseSDK15registerGatewayyAA03SdkE0VSSYaKF",
+        "mangledName": "$s16CoiliiotSenseSDK15registerGatewayyAA03SdkE0VSSYaKF",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "throwing": true,
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "removeGateway",
+        "printedName": "removeGateway(_:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Void",
+            "printedName": "()"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "String",
+            "printedName": "Swift.String",
+            "usr": "s:SS"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:16CoiliiotSenseSDK13removeGatewayyySSYaKF",
+        "mangledName": "$s16CoiliiotSenseSDK13removeGatewayyySSYaKF",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "throwing": true,
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "registerSensor",
+        "printedName": "registerSensor(gatewayId:sensorId:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Void",
+            "printedName": "()"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "String",
+            "printedName": "Swift.String",
+            "usr": "s:SS"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "String",
+            "printedName": "Swift.String",
+            "usr": "s:SS"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:16CoiliiotSenseSDK14registerSensor9gatewayId06sensorG0ySS_SStYaKF",
+        "mangledName": "$s16CoiliiotSenseSDK14registerSensor9gatewayId06sensorG0ySS_SStYaKF",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "throwing": true,
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "unregisterSensor",
+        "printedName": "unregisterSensor(gatewayId:sensorId:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Void",
+            "printedName": "()"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "String",
+            "printedName": "Swift.String",
+            "usr": "s:SS"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "String",
+            "printedName": "Swift.String",
+            "usr": "s:SS"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:16CoiliiotSenseSDK16unregisterSensor9gatewayId06sensorG0ySS_SStYaKF",
+        "mangledName": "$s16CoiliiotSenseSDK16unregisterSensor9gatewayId06sensorG0ySS_SStYaKF",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "throwing": true,
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "getLatestSensorData",
+        "printedName": "getLatestSensorData(gatewayId:sensorId:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "LatestSensorData",
+            "printedName": "CoiliiotSenseSDK.LatestSensorData",
+            "usr": "s:16CoiliiotSenseSDK16LatestSensorDataV"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "String",
+            "printedName": "Swift.String",
+            "usr": "s:SS"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "String",
+            "printedName": "Swift.String",
+            "usr": "s:SS"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:16CoiliiotSenseSDK19getLatestSensorData9gatewayId06sensorI0AA0efG0VSS_SStYaKF",
+        "mangledName": "$s16CoiliiotSenseSDK19getLatestSensorData9gatewayId06sensorI0AA0efG0VSS_SStYaKF",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "throwing": true,
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "listenForSensors",
+        "printedName": "listenForSensors(_:callback:)",
+        "children": [
+          {
+            "kind": "TypeFunc",
+            "name": "Function",
+            "printedName": "() -> ()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ]
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "String",
+            "printedName": "Swift.String",
+            "usr": "s:SS"
+          },
+          {
+            "kind": "TypeFunc",
+            "name": "Function",
+            "printedName": "([CoiliiotSenseSDK.SdkSensor]) -> ()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[CoiliiotSenseSDK.SdkSensor]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SdkSensor",
+                    "printedName": "CoiliiotSenseSDK.SdkSensor",
+                    "usr": "s:16CoiliiotSenseSDK9SdkSensorV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ]
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:16CoiliiotSenseSDK16listenForSensors_8callbackyycSS_ySayAA9SdkSensorVGctKF",
+        "mangledName": "$s16CoiliiotSenseSDK16listenForSensors_8callbackyycSS_ySayAA9SdkSensorVGctKF",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "throwing": true,
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "listenForGateways",
+        "printedName": "listenForGateways(callback:)",
+        "children": [
+          {
+            "kind": "TypeFunc",
+            "name": "Function",
+            "printedName": "() -> ()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ]
+          },
+          {
+            "kind": "TypeFunc",
+            "name": "Function",
+            "printedName": "([CoiliiotSenseSDK.SdkGateway]) -> ()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[CoiliiotSenseSDK.SdkGateway]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SdkGateway",
+                    "printedName": "CoiliiotSenseSDK.SdkGateway",
+                    "usr": "s:16CoiliiotSenseSDK10SdkGatewayV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ]
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:16CoiliiotSenseSDK17listenForGateways8callbackyycySayAA10SdkGatewayVGc_tKF",
+        "mangledName": "$s16CoiliiotSenseSDK17listenForGateways8callbackyycySayAA10SdkGatewayVGc_tKF",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "throwing": true,
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Import",
+        "name": "FirebaseCore",
+        "printedName": "FirebaseCore",
+        "declKind": "Import",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SenseSdk",
+        "printedName": "SenseSdk",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "initSdk",
+            "printedName": "initSdk(config:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SenseSdkConfig",
+                "printedName": "CoiliiotSenseSDK.SenseSdkConfig",
+                "usr": "s:16CoiliiotSenseSDK0B9SdkConfigV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:16CoiliiotSenseSDK0B3SdkO04initD06configyAA0bD6ConfigV_tFZ",
+            "mangledName": "$s16CoiliiotSenseSDK0B3SdkO04initD06configyAA0bD6ConfigV_tFZ",
+            "moduleName": "CoiliiotSenseSDK",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:16CoiliiotSenseSDK0B3SdkO",
+        "mangledName": "$s16CoiliiotSenseSDK0B3SdkO",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "CoiliiotSenseSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SenseSdkConfig",
+        "printedName": "SenseSdkConfig",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "apiKey",
+            "printedName": "apiKey",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK0B9SdkConfigV6apiKeySSvp",
+            "mangledName": "$s16CoiliiotSenseSDK0B9SdkConfigV6apiKeySSvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK0B9SdkConfigV6apiKeySSvg",
+                "mangledName": "$s16CoiliiotSenseSDK0B9SdkConfigV6apiKeySSvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "appId",
+            "printedName": "appId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK0B9SdkConfigV5appIdSSvp",
+            "mangledName": "$s16CoiliiotSenseSDK0B9SdkConfigV5appIdSSvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK0B9SdkConfigV5appIdSSvg",
+                "mangledName": "$s16CoiliiotSenseSDK0B9SdkConfigV5appIdSSvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "projectId",
+            "printedName": "projectId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK0B9SdkConfigV9projectIdSSvp",
+            "mangledName": "$s16CoiliiotSenseSDK0B9SdkConfigV9projectIdSSvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK0B9SdkConfigV9projectIdSSvg",
+                "mangledName": "$s16CoiliiotSenseSDK0B9SdkConfigV9projectIdSSvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "databaseURL",
+            "printedName": "databaseURL",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK0B9SdkConfigV11databaseURLSSvp",
+            "mangledName": "$s16CoiliiotSenseSDK0B9SdkConfigV11databaseURLSSvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK0B9SdkConfigV11databaseURLSSvg",
+                "mangledName": "$s16CoiliiotSenseSDK0B9SdkConfigV11databaseURLSSvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "storageBucket",
+            "printedName": "storageBucket",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK0B9SdkConfigV13storageBucketSSSgvp",
+            "mangledName": "$s16CoiliiotSenseSDK0B9SdkConfigV13storageBucketSSSgvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK0B9SdkConfigV13storageBucketSSSgvg",
+                "mangledName": "$s16CoiliiotSenseSDK0B9SdkConfigV13storageBucketSSSgvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "messagingSenderId",
+            "printedName": "messagingSenderId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK0B9SdkConfigV17messagingSenderIdSSvp",
+            "mangledName": "$s16CoiliiotSenseSDK0B9SdkConfigV17messagingSenderIdSSvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK0B9SdkConfigV17messagingSenderIdSSvg",
+                "mangledName": "$s16CoiliiotSenseSDK0B9SdkConfigV17messagingSenderIdSSvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(apiKey:appId:projectId:databaseURL:storageBucket:messagingSenderId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SenseSdkConfig",
+                "printedName": "CoiliiotSenseSDK.SenseSdkConfig",
+                "usr": "s:16CoiliiotSenseSDK0B9SdkConfigV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:16CoiliiotSenseSDK0B9SdkConfigV6apiKey5appId07projectI011databaseURL13storageBucket015messagingSenderI0ACSS_S4SSgSStcfc",
+            "mangledName": "$s16CoiliiotSenseSDK0B9SdkConfigV6apiKey5appId07projectI011databaseURL13storageBucket015messagingSenderI0ACSS_S4SSgSStcfc",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:16CoiliiotSenseSDK0B9SdkConfigV",
+        "mangledName": "$s16CoiliiotSenseSDK0B9SdkConfigV",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "CoiliiotSenseSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SenseSdkError",
+        "printedName": "SenseSdkError",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "notInitialized",
+            "printedName": "notInitialized",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SenseSdkError",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                    "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO14notInitializedyA2CmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO14notInitializedyA2CmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "notSignedIn",
+            "printedName": "notSignedIn",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SenseSdkError",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                    "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO11notSignedInyA2CmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO11notSignedInyA2CmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "gatewayNotFound",
+            "printedName": "gatewayNotFound",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> (Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(gatewayId: Swift.String)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO15gatewayNotFoundyACSS_tcACmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO15gatewayNotFoundyACSS_tcACmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "gatewayAlreadyClaimed",
+            "printedName": "gatewayAlreadyClaimed",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> (Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(gatewayId: Swift.String)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO21gatewayAlreadyClaimedyACSS_tcACmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO21gatewayAlreadyClaimedyACSS_tcACmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "gatewayNotOwned",
+            "printedName": "gatewayNotOwned",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> (Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(gatewayId: Swift.String)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO15gatewayNotOwnedyACSS_tcACmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO15gatewayNotOwnedyACSS_tcACmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "noOwnershipRecord",
+            "printedName": "noOwnershipRecord",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> (Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(gatewayId: Swift.String)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO17noOwnershipRecordyACSS_tcACmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO17noOwnershipRecordyACSS_tcACmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "sensorAlreadyClaimed",
+            "printedName": "sensorAlreadyClaimed",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> (Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(sensorId: Swift.String)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO20sensorAlreadyClaimedyACSS_tcACmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO20sensorAlreadyClaimedyACSS_tcACmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "sensorNotOwned",
+            "printedName": "sensorNotOwned",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> (Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(sensorId: Swift.String)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO14sensorNotOwnedyACSS_tcACmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO14sensorNotOwnedyACSS_tcACmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "noSensorOwnershipRecord",
+            "printedName": "noSensorOwnershipRecord",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> (Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(sensorId: Swift.String)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO23noSensorOwnershipRecordyACSS_tcACmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO23noSensorOwnershipRecordyACSS_tcACmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "noSensorData",
+            "printedName": "noSensorData",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> (Swift.String, Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String, Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(gatewayId: Swift.String, sensorId: Swift.String)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO12noSensorDatayACSS_SStcACmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO12noSensorDatayACSS_SStcACmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "gatewayNotScanned",
+            "printedName": "gatewayNotScanned",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> (Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(gatewayId: Swift.String)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO17gatewayNotScannedyACSS_tcACmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO17gatewayNotScannedyACSS_tcACmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "gatewayNotConnected",
+            "printedName": "gatewayNotConnected",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> (Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(gatewayId: Swift.String)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO19gatewayNotConnectedyACSS_tcACmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO19gatewayNotConnectedyACSS_tcACmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "bluetoothUnavailable",
+            "printedName": "bluetoothUnavailable",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> (Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(state: Swift.String)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO20bluetoothUnavailableyACSS_tcACmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO20bluetoothUnavailableyACSS_tcACmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "bluetoothPermissionDenied",
+            "printedName": "bluetoothPermissionDenied",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SenseSdkError",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                    "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO25bluetoothPermissionDeniedyA2CmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO25bluetoothPermissionDeniedyA2CmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "scanFailed",
+            "printedName": "scanFailed",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> (any Swift.Error) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(any Swift.Error) -> CoiliiotSenseSDK.SenseSdkError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(underlying: any Swift.Error)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO10scanFailedyACs0E0_p_tcACmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO10scanFailedyACs0E0_p_tcACmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "connectTimedOut",
+            "printedName": "connectTimedOut",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> (Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(gatewayId: Swift.String)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO15connectTimedOutyACSS_tcACmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO15connectTimedOutyACSS_tcACmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "connectionLost",
+            "printedName": "connectionLost",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> (Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(gatewayId: Swift.String)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO14connectionLostyACSS_tcACmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO14connectionLostyACSS_tcACmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "serviceDiscoveryFailed",
+            "printedName": "serviceDiscoveryFailed",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> (Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(gatewayId: Swift.String)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO22serviceDiscoveryFailedyACSS_tcACmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO22serviceDiscoveryFailedyACSS_tcACmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "wifiCredentialsRejected",
+            "printedName": "wifiCredentialsRejected",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SenseSdkError",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                    "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO23wifiCredentialsRejectedyA2CmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO23wifiCredentialsRejectedyA2CmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "gatewayReachedCloudFailed",
+            "printedName": "gatewayReachedCloudFailed",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SenseSdkError",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                    "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO25gatewayReachedCloudFailedyA2CmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO25gatewayReachedCloudFailedyA2CmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "unexpectedProvisioningResult",
+            "printedName": "unexpectedProvisioningResult",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CoiliiotSenseSDK.SenseSdkError.Type) -> (Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> CoiliiotSenseSDK.SenseSdkError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CoiliiotSenseSDK.SenseSdkError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SenseSdkError",
+                        "printedName": "CoiliiotSenseSDK.SenseSdkError",
+                        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO28unexpectedProvisioningResultyACSScACmF",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO28unexpectedProvisioningResultyACSScACmF",
+            "moduleName": "CoiliiotSenseSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "errorDescription",
+            "printedName": "errorDescription",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO16errorDescriptionSSSgvp",
+            "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO16errorDescriptionSSSgvp",
+            "moduleName": "CoiliiotSenseSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO16errorDescriptionSSSgvg",
+                "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO16errorDescriptionSSSgvg",
+                "moduleName": "CoiliiotSenseSDK",
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:16CoiliiotSenseSDK0B8SdkErrorO",
+        "mangledName": "$s16CoiliiotSenseSDK0B8SdkErrorO",
+        "moduleName": "CoiliiotSenseSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Error",
+            "printedName": "Error",
+            "usr": "s:s5ErrorP",
+            "mangledName": "$ss5ErrorP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "LocalizedError",
+            "printedName": "LocalizedError",
+            "usr": "s:10Foundation14LocalizedErrorP",
+            "mangledName": "$s10Foundation14LocalizedErrorP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/Ble.swift",
+      "kind": "StringLiteral",
+      "offset": 339,
+      "length": 38,
+      "value": "\"12345678-1234-5678-1234-56789abcdef0\""
+    },
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/Ble.swift",
+      "kind": "StringLiteral",
+      "offset": 421,
+      "length": 38,
+      "value": "\"12345678-1234-5678-1234-56789abcdef1\""
+    },
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/Ble.swift",
+      "kind": "StringLiteral",
+      "offset": 505,
+      "length": 38,
+      "value": "\"12345678-1234-5678-1234-56789abcdef2\""
+    },
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/Ble.swift",
+      "kind": "StringLiteral",
+      "offset": 577,
+      "length": 15,
+      "value": "\"Coiliiot RW10\""
+    },
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/Ble.swift",
+      "kind": "StringLiteral",
+      "offset": 621,
+      "length": 9,
+      "value": "\"wifi_ok\""
+    },
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/Ble.swift",
+      "kind": "StringLiteral",
+      "offset": 654,
+      "length": 4,
+      "value": "\"ok\""
+    },
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/Ble.swift",
+      "kind": "StringLiteral",
+      "offset": 688,
+      "length": 11,
+      "value": "\"wifi_fail\""
+    },
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/Ble.swift",
+      "kind": "StringLiteral",
+      "offset": 731,
+      "length": 13,
+      "value": "\"server_fail\""
+    },
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/Ble.swift",
+      "kind": "FloatLiteral",
+      "offset": 794,
+      "length": 3,
+      "value": "3.0"
+    },
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/Ble.swift",
+      "kind": "FloatLiteral",
+      "offset": 848,
+      "length": 4,
+      "value": "10.0"
+    },
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/Ble.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2130,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/Ble.swift",
+      "kind": "Dictionary",
+      "offset": 4542,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/Ble.swift",
+      "kind": "Dictionary",
+      "offset": 5069,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/Ble.swift",
+      "kind": "Dictionary",
+      "offset": 5319,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/Ble.swift",
+      "kind": "Dictionary",
+      "offset": 5387,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/Ble.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5483,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/Ble.swift",
+      "kind": "Dictionary",
+      "offset": 5546,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/Device.swift",
+      "kind": "Dictionary",
+      "offset": 3512,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/ruby\/Documents\/Github\/sense-projects\/sense-sdk\/ios\/Sources\/CoiliiotSenseSDK\/SenseSdk.swift",
+      "kind": "StringLiteral",
+      "offset": 475,
+      "length": 16,
+      "value": "\"coiliiot-sense\""
+    }
+  ]
+}

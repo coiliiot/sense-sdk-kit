@@ -1,0 +1,35 @@
+name: SenseSDKDemo
+options:
+  bundleIdPrefix: com.coiliiot
+  deploymentTarget:
+    iOS: "15.0"
+targets:
+  SenseSDKDemo:
+    type: application
+    platform: iOS
+    sources:
+      - SenseSDKDemo
+    dependencies:
+      # The compiled XCFramework from ../sdk — same artifact an OEM
+      # partner gets, not the SDK's source. This app must never reference
+      # sense-sdk's source directly (a sibling, private repo); doing so
+      # would make it unshippable as an OEM reference app.
+      - framework: ../sdk/CoiliiotSenseSDK.xcframework
+        embed: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.coiliiot.sensesdkdemo
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: "Sense SDK Demo"
+        INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription: "This demo needs Bluetooth to scan for and provision Coiliiot Sense gateways."
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        # Only skip signing for Simulator builds (needed to build/test here,
+        # where no Apple Developer Team is configured) — a real device
+        # requires a signed app, no exceptions, so these must NOT apply
+        # there. Pick your own Team in Xcode's Signing & Capabilities tab
+        # before building for a device; CODE_SIGN_STYLE: Automatic above
+        # handles provisioning profile selection from there.
+        "CODE_SIGNING_REQUIRED[sdk=iphonesimulator*]": NO
+        "CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]": NO

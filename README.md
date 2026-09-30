@@ -37,10 +37,24 @@ into a KMP app directly, with no bridge needed.
 
 ## iOS
 
-Not yet available.
+- **[`ios/sdk/`](ios/sdk)** — the compiled `CoiliiotSenseSDK.xcframework`
+  and the full [API README](ios/sdk/README.md). No Swift source, and no
+  peer dependencies to add — unlike Android/React Native, Firebase is
+  compiled directly into the framework.
+- **[`ios/demo/`](ios/demo)** — a complete, buildable native SwiftUI
+  reference app exercising the same flow as the other two demos, and
+  verified end to end on real hardware. See
+  [`ios/demo/README.md`](ios/demo/README.md) for setup, the test account,
+  and what that real-device pass found.
+
+This is for OEM partners building a native iOS app instead of React
+Native. Read [`ios/sdk/README.md`](ios/sdk/README.md)'s note on Firebase
+before integrating if your own app also uses Firebase for anything else.
 
 ## Distribution
 
-Each platform ships from a [GitHub Release](../../releases) with its
-compiled artifact attached, so you don't need repo tree access to grab a
-copy — see each platform's own README for the exact install command.
+Android and React Native ship from a [GitHub Release](../../releases)
+with their compiled artifacts attached, so you don't need repo tree
+access to grab a copy — see each platform's own README for the exact
+install command. The iOS `.xcframework` isn't attached to a release yet;
+for now, get it from `ios/sdk/` in this repo tree.

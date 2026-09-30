@@ -101,8 +101,9 @@ were real, not cosmetic:
   wrapping its own label one letter per line. Fixed by weighting the
   label instead of the button in every row that pairs one with the
   other.
-- **BLE scanning found nothing at all** — separately fixed, see
-  `../../sense-sdk/android/README.md`'s `neverForLocation` note.
+- **BLE scanning found nothing at all** — caused by the missing
+  `neverForLocation` flag described above; fixed by adding it to the
+  manifest.
 
 ## Known limitation: state and process death
 
