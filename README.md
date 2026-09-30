@@ -13,12 +13,13 @@ demo app to copy from freely.
 
 <img src="docs/demo.gif" alt="RN example app: sign in, scan, provision, register, claim sensors" width="320">
 
-- **[`sdk/`](sdk)** — compiled JS + type declarations (`lib/`), the packed
-  installable tarball, and the full [API README](sdk/README.md). No
-  TypeScript source.
-- **[`example/`](example)** — a complete, buildable reference app. See
-  [`example/README.md`](example/README.md) for setup, the test account,
-  and troubleshooting.
+- **[`react-native/sdk/`](react-native/sdk)** — compiled JS + type
+  declarations (`lib/`), the packed installable tarball, and the full
+  [API README](react-native/sdk/README.md). No TypeScript source.
+- **[`react-native/example/`](react-native/example)** — a complete,
+  buildable reference app. See
+  [`react-native/example/README.md`](react-native/example/README.md) for
+  setup, the test account, and troubleshooting.
 
 ## Android
 
